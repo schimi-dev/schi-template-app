@@ -10,10 +10,12 @@ module.exports = {
     theme: {
         colors: {
             primary: colors.blue,
+            secondary: colors.purple,
             error: colors.red,
             success: colors.green,
             warning: colors.yellow,
             neutral: colors.neutral,
+            white: colors.white,
         },
     },
     plugins: [],
