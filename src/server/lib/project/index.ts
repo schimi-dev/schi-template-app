@@ -1,0 +1,94 @@
+import { WithId, Document, ObjectId, Sort } from "mongodb";
+import { cache } from "react";
+import clientPromise from "@/server/mongodb";
+import { Project, TCreateProject, TUpdateProject } from "@/types/project";
+
+export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
+    const _projectCollection = await getProjectCollection();
+    let sortObj: Sort = {};
+    sortObj["createdAt"] = -1;
+    sortObj["_id"] = 1;
+    const _projects = await _projectCollection
+        .find({
+            $and: [
+                { userAccountId },
+                { userAccountProvider },
+            ]
+        })
+        .sort(sortObj)
+        .toArray();
+    return _projects.map(x => toProject(x));
+});
+
+export const findProject = cache(async (id: string, userAccountId: string, userAccountProvider: string) => {
+    const projectQuery = {
+        $and: [
+            { _id: new ObjectId(id) },
+            { userAccountId },
+            { userAccountProvider },
+        ]
+    };
+    const _projectCollection = await getProjectCollection();
+    const _project = await _projectCollection.findOne(projectQuery);
+    if (!_project) {
+        console.error(`Could not find project with id ${id}`);
+        return null;
+    }
+    return toProject(_project);
+});
+
+
+export const createProject = async (data: TCreateProject, userAccountId: string, userAccountProvider: string) => {
+    const _projectCollection = await getProjectCollection();
+    const now = new Date();
+
+    const { insertedId } = await _projectCollection.insertOne({
+        ...data,
+        createdAt: now,
+        lastUpdate: now,
+        userAccountId,
+        userAccountProvider,
+    });
+    const projectQuery = { _id: new ObjectId(insertedId) };
+    const _project = await _projectCollection.findOne(projectQuery);
+    if (!_project) return null;
+    return toProject(_project);
+};
+
+export const updateProject = async (data: TUpdateProject, userAccountId: string, userAccountProvider: string) => {
+    const { id, ...rest } = data;
+    const projectQuery = {
+        $and: [
+            { _id: new ObjectId(id) },
+            { userAccountId },
+            { userAccountProvider },
+        ]
+    };
+    const _projectCollection = await getProjectCollection();
+    const patchOp = {
+        $set: { ...rest, lastUpdate: new Date() }
+    };
+    const _project = await _projectCollection.findOneAndUpdate(projectQuery, patchOp, { returnDocument: "after" });
+    if (!_project.value) return null;
+    return toProject(_project.value);
+};
+
+export const deleteProject = async (id: string, userAccountId: string, userAccountProvider: string) => {
+    const projectQuery = {
+        $and: [
+            { _id: new ObjectId(id) },
+            { userAccountId },
+            { userAccountProvider },
+        ]
+    };
+    const _projectCollection = await getProjectCollection();
+    await _projectCollection.deleteOne(projectQuery);
+};
+
+const toProject = (projectDocument: WithId<Document>) => {
+    const { _id, ...rest } = projectDocument;
+    const project = Project.parse({ id: _id.toString(), ...rest });
+    return project;
+}
+
+const getProjectCollection = async () => await clientPromise.then(client => client.db().collection("project"));

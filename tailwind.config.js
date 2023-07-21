@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
@@ -6,7 +8,13 @@ module.exports = {
         './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     theme: {
-        extend: {},
+        colors: {
+            primary: colors.blue,
+            error: colors.red,
+            success: colors.green,
+            warning: colors.yellow,
+            neutral: colors.neutral,
+        },
     },
     plugins: [],
 }
