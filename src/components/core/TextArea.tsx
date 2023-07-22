@@ -30,8 +30,8 @@ export default function TextArea({
             spellCheck={false}
             autoComplete="off"
             className={large ?
-                "border text-sm rounded-md block w-full bg-neutral-950 border-neutral-500 focus:outline-none focus:border-primary-400 p-3" :
-                "border text-sm rounded-md block w-full bg-neutral-950 border-neutral-500 focus:outline-none focus:border-primary-400 p-2"
+                "border text-sm rounded block w-full bg-[rgba(0,0,0,0.3)] border-neutral-600 focus:outline-none focus:border-primary-500 p-3" :
+                "border text-sm rounded block w-full bg-[rgba(0,0,0,0.3)] border-neutral-600 focus:outline-none focus:border-primary-500 p-2"
             }
         />
     )

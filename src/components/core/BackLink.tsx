@@ -10,7 +10,7 @@ export default function BackLink({ href }: { href: Route }) {
             href={href}
             className="inline-flex items-center text-sm font-medium text-neutral-400 hover:underline mb-3"
         >
-            <MdArrowBack className="mr-2" />
+            <MdArrowBack className="h-4 w-4 mr-2" />
             Back
         </Link>
     )
