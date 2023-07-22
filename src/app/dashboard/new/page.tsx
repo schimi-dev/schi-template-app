@@ -1,7 +1,7 @@
 import BackLink from "@/components/core/BackLink"
 import Input from "@/components/core/Input";
 import Label from "@/components/core/Label";
-import SubmitButton from "@/components/core/SubmitButton";
+import Submit from "@/components/core/Submit";
 import TextArea from "@/components/core/TextArea";
 import navigation from "@/navigation"
 import { createProjectAction } from "@/server/lib/project/actions";
@@ -12,9 +12,9 @@ export default function Page() {
     const id = useId();
 
     return (
-        <div>
+        <div className="p-6 flex flex-col gap-6 items-start">
             <BackLink href={navigation.dashboard} />
-            <main className="flex flex-col mx-auto w-full max-w-xl">
+            <main className="flex flex-col mx-auto w-full max-w-lg">
                 <h1 className="text-2xl font-medium text-center mb-8">
                     Create a new project
                 </h1>
@@ -32,7 +32,6 @@ export default function Page() {
                             autoFocus
                             required
                             maxLength={40}
-                            large
                         />
                     </div>
                     <div>
@@ -42,11 +41,10 @@ export default function Page() {
                             name="description"
                             maxLength={200}
                             rows={6}
-                            large
                         />
                     </div>
-                    <div>
-                        <SubmitButton >Create project</SubmitButton>
+                    <div className="flex flex-row items-center justify-center">
+                        <Submit>Create project</Submit>
                     </div>
                 </form>
             </main>

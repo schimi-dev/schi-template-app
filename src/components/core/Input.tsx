@@ -2,7 +2,6 @@ export default function Input({
     id,
     name,
     defaultValue = "",
-    large = false,
     autoFocus=false,
     required = false,
     minLength,
@@ -12,7 +11,6 @@ export default function Input({
     id: string,
     name: string,
     defaultValue?: string,
-    large?: boolean,
     autoFocus?: boolean,
     required?: boolean,
     minLength?: number,
@@ -33,10 +31,8 @@ export default function Input({
             type="text"
             spellCheck={false}
             autoComplete="off"
-            className={large ?
-                "border text-sm rounded block w-full bg-[rgba(0,0,0,0.2)] border-[rgba(255,255,255,0.2)] hover:border-[rgba(255,255,255,0.3)] focus:outline-none focus:border-primary-500 p-3" :
-                "border text-sm rounded block w-full bg-[rgba(0,0,0,0.2)] border-[rgba(255,255,255,0.2)] hover:border-[rgba(255,255,255,0.3)] focus:outline-none focus:border-primary-500 p-2"
-            }
+            className="border text-sm rounded block w-full bg-[rgba(0,0,0,0.2)] border-[rgba(255,255,255,0.2)] hover:border-[rgba(255,255,255,0.3)] focus:outline-none focus:border-primary-400 px-3 py-2"
+            
         />
     )
 }

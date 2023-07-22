@@ -8,7 +8,7 @@ export default function BackLink({ href }: { href: Route }) {
     return (
         <Link
             href={href}
-            className="inline-flex items-center text-sm font-medium text-neutral-400 hover:underline mb-3"
+            className="inline-flex items-center justify-center text-sm font-medium pl-1 pr-2 py-1.5 rounded hover:bg-neutral-800"
         >
             <MdArrowBack className="h-4 w-4 mr-2" />
             Back

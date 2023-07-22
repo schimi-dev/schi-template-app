@@ -9,8 +9,7 @@ module.exports = {
     ],
     theme: {
         colors: {
-            primary: colors.blue,
-            secondary: colors.purple,
+            primary: colors.indigo,
             error: colors.red,
             success: colors.green,
             warning: colors.yellow,
