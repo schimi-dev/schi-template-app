@@ -25,26 +25,29 @@ export default function Page() {
                     action={createProjectAction}
                 >
                     <div>
-                        <Label htmlFor={id}>Name</Label>
+                        <Label htmlFor={`${id}-name`}>Name</Label>
                         <Input
-                            id={id}
+                            id={`${id}-name`}
                             name="name"
+                            autoFocus
                             required
                             maxLength={40}
                             large
                         />
                     </div>
                     <div>
-                        <Label htmlFor={id}>Description</Label>
+                        <Label htmlFor={`${id}-description`}>Description</Label>
                         <TextArea
-                            id={id}
+                            id={`${id}-description`}
                             name="description"
                             maxLength={200}
-                            rows={4}
+                            rows={6}
                             large
                         />
                     </div>
-                    <SubmitButton large>Create project</SubmitButton>
+                    <div>
+                        <SubmitButton >Create project</SubmitButton>
+                    </div>
                 </form>
             </main>
         </div>

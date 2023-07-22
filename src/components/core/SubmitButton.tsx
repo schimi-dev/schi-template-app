@@ -20,11 +20,11 @@ export default function SubmitButton({
             disabled={pending}
             className={large ? (
                 danger ?
-                    "text-sm font-medium rounded relative flex items-center justify-center text-white py-3 px-6 w-full bg-error-700 hover:bg-error-600 disabled:hover:bg-error-700" :
-                    "text-sm font-medium rounded relative flex items-center justify-center text-white py-3 px-6 w-full bg-primary-700 hover:bg-primary-600 disabled:hover:bg-primary-700") :
+                    "text-sm font-medium rounded relative flex items-center justify-center text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.05)] to-[rgba(0,0,0,0.05)] disabled:hover:bg-none py-3 px-6 bg-error-600" :
+                    "text-sm font-medium rounded relative flex items-center justify-center text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.05)] to-[rgba(0,0,0,0.05)] disabled:hover:bg-none py-3 px-6 bg-primary-600") :
                 (danger ?
-                    "text-sm font-medium rounded relative flex items-center justify-center text-white py-2 px-4 bg-error-700 hover:bg-error-600 disabled:hover:bg-error-700" :
-                    "text-sm font-medium rounded relative flex items-center justify-center text-white py-2 px-4 bg-primary-700 hover:bg-primary-600 disabled:hover:bg-primary-700"
+                    "text-sm font-medium rounded relative flex items-center justify-center text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.0.05)] to-[rgba(0,0,0,0.05)] disabled:hover:bg-none py-2 px-4 bg-error-600" :
+                    "text-sm font-medium rounded relative flex items-center justify-center text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.05)] to-[rgba(0,0,0,0.05)] disabled:hover:bg-none py-2 px-4 bg-primary-600"
                 )}
 
         >
