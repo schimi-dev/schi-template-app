@@ -6,12 +6,15 @@ import TextArea from "@/components/core/TextArea";
 import navigation from "@/navigation"
 import getUser from "@/server/auth/getUser";
 import { createProjectAction } from "@/server/lib/project/actions";
+import type { Route } from "next";
 
-export default async function Page() {
+export default async function Page({ searchParams }: { searchParams: { backUrl?: string } }) {
 
     const id = "new-project-form";
 
     const user = await getUser();
+
+    const backUrl = searchParams.backUrl ?? navigation.dashboard;
 
     return (
         <div className="p-8 flex flex-col gap-6 items-start">
@@ -24,7 +27,7 @@ export default async function Page() {
                         {user.name || user.email}
                     </p>
                 </div>
-                <BackLink href={navigation.dashboard} >
+                <BackLink href={backUrl as Route} >
                     {`Back to ${process.env.NEXT_PUBLIC_TITLE}`}
                 </BackLink>
             </div>
