@@ -26,7 +26,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
 
     return (
         <>
-            <button className="h-10 w-7 rounded hover:bg-neutral-800 flex items-center justify-center" >
+            <button className="h-10 w-7 rounded hover:bg-secondary-800 flex items-center justify-center" >
                 <MdUnfoldMore className="h-6 w-6" />
             </button>
             {/* <MenuPopper

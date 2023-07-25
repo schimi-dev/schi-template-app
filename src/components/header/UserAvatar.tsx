@@ -5,7 +5,7 @@ export default function UserAvatar({ user }: { user: NonNullable<Session["user"]
 
     return (
         <Image
-            className="rounded-full border border-neutral-700"
+            className="rounded-full border border-secondary-700"
             src={"/avatars/preset.svg"}
             alt={user.name || "Avatar"}
             height={32}
