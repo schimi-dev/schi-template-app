@@ -16,7 +16,7 @@ export default function Header({ projects, user }: { projects: TProject[], user:
     const project = isProjectRoute ? projects.find(project => project.id === projectParam) : null;
 
     return (
-        <header className="sticky top-0 h-14 bg-secondary-900 border-b border-b-[rgba(255,255,255,0.15)] flex items-center px-5">
+        <header className="sticky top-0 h-14 bg-secondary-900 border-b border-b-secondary-700 flex items-center px-5">
             <UserLink user={user} />
             {project && <hr className="rotate-12 h-7 w-[1px] bg-secondary-700 text-secondary-700 mx-4"/>}
             {project && <ProjectLink projects={projects} project={project} />}

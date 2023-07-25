@@ -1,6 +1,6 @@
 const login = "/login" as const;
 const dashboard = "/dashboard" as const;
-const newProject = `${dashboard}/new` as const;
+const newProject = "/new" as const;
 
 const _singleProject = (id: string) => `${dashboard}/${id}` as const
 const singleProjectOverview = (id: string) => `${_singleProject(id)}/overview` as const;
