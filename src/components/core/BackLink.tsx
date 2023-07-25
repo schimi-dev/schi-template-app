@@ -3,7 +3,7 @@ import React from "react";
 import type { Route } from "next";
 import { MdNavigateBefore } from "react-icons/md";
 
-export default function BackLink({ href, children }: { href: Route, children?: string }) {
+export default function BackLink<T extends string>({ href, children }: { href: Route<T>, children?: string }) {
 
     return (
         <Link

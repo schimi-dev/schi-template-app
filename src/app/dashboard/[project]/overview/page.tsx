@@ -2,7 +2,9 @@ import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetad
 
 export default function Page() {
 
-    throw new Error();
+    <>
+        TODO Overview
+    </>
 }
 
 export const generateMetadata = makeGenerateProjectMetadata("Overview")

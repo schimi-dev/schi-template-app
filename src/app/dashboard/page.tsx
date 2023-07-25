@@ -1,6 +1,10 @@
 export default function Page() {
 
-    throw new Error();
+    return (
+        <>
+            TODO Dashboard
+        </>
+    )
 }
 
 export const metadata = {
