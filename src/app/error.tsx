@@ -26,7 +26,7 @@ export default function Error({ error, reset }: {
                 <p className="text-sm font-medium" >
                     Something went wrong!
                 </p>
-                <button className="text-primary-400 text-sm font-medium px-3 py-2 rounded hover:bg-secondary-100 dark:hover:bg-secondary-800" onClick={retry}>Try again</button>
+                <button className="text-primary-500 dark:text-primary-400 text-sm font-medium px-3 py-2 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800" onClick={retry}>Try again</button>
             </>}
             {isPending &&
                 <div role="status">
