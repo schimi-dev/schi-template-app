@@ -32,7 +32,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
 
     return (
         <Popover className="relative">
-            <Popover.Button className="h-10 w-7 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 flex items-center justify-center focus:outline-none">
+            <Popover.Button className="h-10 w-7 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 flex items-center justify-center">
                 <MdUnfoldMore className="h-6 w-6" />
             </Popover.Button>
             <Popover.Panel className="top-11 left-3.5 -translate-x-1/2 absolute z-10 rounded-md overflow-hidden shadow border border-secondary-300 bg-white dark:border-secondary-700 dark:bg-secondary-800">
@@ -47,7 +47,8 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         <div className="px-4 gap-3 flex items-center justify-center" >
                             <MdSearch className="h-5 w-5 text-secondary-400" />
                             <input
-                                className="py-4 focus:outline-none w-full text-sm dark:bg-secondary-800 placeholder-secondary-400"
+                                autoFocus
+                                className="py-4 w-full text-sm dark:bg-secondary-800 placeholder-secondary-400"
                                 placeholder={'Find Project\u2026'}
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
@@ -60,7 +61,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                 {filteredProjects.map(x => (
                                     <li
                                         key={x.id}
-                                        className="flex items-center px-4 py-2 gap-3 text-sm focus:outline-none cursor-pointer hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                        className="flex items-center px-4 py-2 gap-3 text-sm cursor-pointer hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                         onClick={() => { close(); setSearch(""); selectProject(x.id); }}
                                     >
                                         <ProjectAvatar project={x} />
@@ -78,7 +79,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         <Divider />
                         <div className="py-2">
                             <ul>
-                                <li className="flex items-center px-4 py-2 gap-3 text-sm focus:outline-none cursor-pointer text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                <li className="flex items-center px-4 py-2 gap-3 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                     onClick={() => { close(); setSearch(""); push(`${navigation.newProject}?backUrl=${encodeURIComponent(pathname)}`) }}
                                 >
                                     <MdAddCircleOutline className="h-5 w-5 text-primary-500 dark:text-primary-400" />

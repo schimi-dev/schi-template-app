@@ -11,3 +11,7 @@
     color-scheme: light;
     background-color: #fff;
 }
+
+*:focus {
+    outline: none;
+}
