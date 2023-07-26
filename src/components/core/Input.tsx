@@ -31,7 +31,7 @@ export default function Input({
             type="text"
             spellCheck={false}
             autoComplete="off"
-            className="border text-sm rounded block w-full bg-[rgba(0,0,0,0.2)] border-[rgba(255,255,255,0.2)] hover:border-[rgba(255,255,255,0.3)] focus:outline-none focus:border-primary-400 px-3 py-2"
+            className="border text-sm rounded block w-full dark:bg-[rgba(0,0,0,0.2)] border-[rgba(0,0,0,0.2)] hover:border-[rgba(0,0,0,0.3)] dark:border-[rgba(255,255,255,0.2)] dark:hover:border-[rgba(255,255,255,0.3)] focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 px-3 py-2"
             
         />
     )

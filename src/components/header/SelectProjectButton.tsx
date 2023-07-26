@@ -81,7 +81,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                 <li className="flex items-center px-4 py-2 gap-3 text-sm focus:outline-none cursor-pointer text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                     onClick={() => { close(); setSearch(""); push(`${navigation.newProject}?backUrl=${encodeURIComponent(pathname)}`) }}
                                 >
-                                    <MdAddCircleOutline className="h-5 w-5 text-primary-400" />
+                                    <MdAddCircleOutline className="h-5 w-5 text-primary-500 dark:text-primary-400" />
                                     Create Project
                                 </li>
                             </ul>
