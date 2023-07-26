@@ -17,8 +17,8 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
     const backUrl = searchParams.backUrl ?? navigation.dashboard;
 
     return (
-        <div className="h-screen p-8 flex flex-col gap-6 items-start">
-            <div className="flex flex-row w-full items-center gap-4">
+        <div className="min-h-screen p-8 flex flex-col gap-6">
+            <div className="flex flex-row w-full items-start gap-4">
                 <div className="flex-1">
                     <p className="text-xs text-secondary-500 mb-1">
                         Logged in as:
@@ -39,7 +39,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
                     {"Projects are a demo resource within this app."}
                 </p>
                 <form
-                    className="flex flex-col gap-8"
+                    className="flex flex-col gap-7"
                     spellCheck={false}
                     autoComplete="off"
                     action={createProjectAction}
