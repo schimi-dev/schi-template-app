@@ -1,25 +1,18 @@
-'use client'
+import getUser from "@/server/auth/getUser";
+import { findProjects } from "@/server/lib/project";
+import HeaderClientComponent from "./HeaderClientComponent";
+import ToggleThemeForm from "./ToggleThemeForm";
+import LogoutButton from "./LogoutButton";
 
-import { TProject } from "@/types/project"
-import { Session } from "next-auth"
-import UserLink from "./UserLink"
-import { useParams, usePathname } from "next/navigation";
-import navigation from "@/navigation";
-import ProjectLink from "./ProjectLink";
+export default async function Header() {
 
-export default function Header({ projects, user }: { projects: TProject[], user: NonNullable<Session["user"]> }) {
-
-    const { project: projectParam } = useParams() as { project?: string };
-    const pathname = usePathname();
-
-    const isProjectRoute = !!projectParam && pathname.startsWith(navigation._singleProject(projectParam));
-    const project = isProjectRoute ? projects.find(project => project.id === projectParam) : null;
+    const user = await getUser();
+    const projects = await findProjects(user.id, user.provider);
 
     return (
-        <header className="sticky top-0 h-14 bg-secondary-900 border-b border-b-secondary-700 flex items-center px-5">
-            <UserLink user={user} />
-            {project && <hr className="rotate-12 h-7 w-[1px] bg-secondary-700 text-secondary-700 mx-4"/>}
-            {project && <ProjectLink projects={projects} project={project} />}
-        </header>
+        <HeaderClientComponent projects={projects} user={user} >
+            <ToggleThemeForm />
+            <LogoutButton />
+        </HeaderClientComponent>
     )
 }

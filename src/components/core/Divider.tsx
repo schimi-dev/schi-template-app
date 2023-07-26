@@ -1,6 +1,6 @@
 export default function Divider() {
 
     return (
-        <hr className="w-full h-[1px] bg-seondary-700 text-secondary-700" />
+        <hr className="w-full border-t border-t-secondary-300 dark:border-t-secondary-700" />
     )
 }
