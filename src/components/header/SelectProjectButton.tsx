@@ -51,7 +51,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         >
                             <MdSearch className="h-5 w-5 text-secondary-400" />
                             <input
-                                className="py-3 focus:outline-none w-full text-sm bg-secondary-800 placeholder-secondary-400"
+                                className="py-4 focus:outline-none w-full text-sm bg-secondary-800 placeholder-secondary-400"
                                 placeholder={'Find Project\u2026'}
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
