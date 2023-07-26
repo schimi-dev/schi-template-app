@@ -17,7 +17,7 @@ export default function HeaderClientComponent({ projects, user, children }: { pr
     const project = isProjectRoute ? projects.find(project => project.id === projectParam) : null;
 
     return (
-        <header className="sticky top-0 h-14 bg-white dark:bg-secondary-900 border-b border-b-secondary-300 dark:border-b-secondary-700 flex items-center px-5 gap-4">
+        <header className="z-10 sticky top-0 h-14 bg-white dark:bg-secondary-900 border-b border-b-secondary-300 dark:border-b-secondary-700 flex items-center px-5 gap-4">
             <UserLink user={user} />
             {project && <span className="text-secondary-300 dark:text-secondary-700 flex items-center justify-center text-4xl font-thin" >
                 /

@@ -1,5 +1,3 @@
-'use client'
-
 import { TProject } from "@/types/project";
 import { updateProjectAction } from "@/server/lib/project/actions";
 import Input from "@/components/core/Input";

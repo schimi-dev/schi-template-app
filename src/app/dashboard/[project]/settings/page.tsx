@@ -8,7 +8,6 @@ import Button from "@/components/core/Button";
 
 export default async function Page({ params }: { params: { project: string } }) {
 
-
     const user = await getUser();
     const project = await findProject(params.project, user.id, user.provider)
 
