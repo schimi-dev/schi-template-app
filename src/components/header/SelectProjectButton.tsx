@@ -32,10 +32,11 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                 <MdUnfoldMore className="h-6 w-6" />
             </Menu.Button>
             <Menu.Items className="top-11 left-3.5 -translate-x-1/2 absolute z-10 rounded-md overflow-hidden shadow border border-secondary-300 bg-white dark:border-secondary-700 dark:bg-secondary-800">
-                <div className="p-4">
-                    <h2 className="text-sm font-medium">
+                <div className="p-4 flex items-center gap-2">
+                    <h2 className="text-sm font-medium flex-1">
                         Projects
                     </h2>
+                    <span className="text-xs px-0.5 rounded border border-secondary-400 dark:border-secondary-500 dark:bg-secondary-900">Esc</span>
                 </div>
                 <Divider />
                 <div className="py-2 overflow-auto w-[280px] max-h-[200px]">
