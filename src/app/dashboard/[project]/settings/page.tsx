@@ -2,7 +2,11 @@ import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetad
 
 export default function Page() {
 
-    throw new Error();
+    return (
+        <>
+            Settings
+        </>
+    )
 }
 
 export const generateMetadata = makeGenerateProjectMetadata("Settings")
