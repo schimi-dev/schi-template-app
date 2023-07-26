@@ -14,7 +14,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
 
     const user = await getUser();
 
-    const backUrl = searchParams.backUrl ?? navigation.dashboard;
+    const backUrl = searchParams.backUrl ? searchParams.backUrl as Route : navigation.dashboard;
 
     return (
         <div className="min-h-screen p-8 flex flex-col gap-6">
@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
                         {user.name || user.email}
                     </p>
                 </div>
-                <BackLink href={backUrl as Route} >
+                <BackLink href={backUrl} >
                     {`Back to ${process.env.NEXT_PUBLIC_TITLE}`}
                 </BackLink>
             </div>

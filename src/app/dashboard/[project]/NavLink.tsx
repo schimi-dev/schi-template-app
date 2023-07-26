@@ -12,13 +12,13 @@ export default function NavLink<T extends string>({ href, children }: { href: Ro
     const active = pathname === href
 
     return (
-        <Link 
-        href={href} 
-        className={active?
-            "text-sm flex items-center gap-3 px-5 py-2 font-medium bg-secondary-100 dark:bg-secondary-800" :
-            "text-sm flex items-center gap-3 px-5 py-2 font-normal hover:bg-secondary-100 dark:hover:bg-secondary-800  text-secondary-700 dark:text-secondary-300"
-        }
-            >
+        <Link
+            href={href}
+            className={active ?
+                "text-sm flex items-center gap-3 px-5 py-2 font-medium bg-secondary-100 dark:bg-secondary-800" :
+                "text-sm flex items-center gap-3 px-5 py-2 font-normal hover:bg-secondary-100 dark:hover:bg-secondary-800  text-secondary-700 dark:text-secondary-300"
+            }
+        >
             {children}
         </Link>
     )

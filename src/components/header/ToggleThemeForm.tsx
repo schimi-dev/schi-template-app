@@ -22,7 +22,7 @@ export default function ToggleThemeForm() {
         <form action={changeTheme} className="ml-auto">
             <input type="hidden" name="theme" defaultValue={theme === "light" ? "dark" : "light"} />
             <button type="submit" className="h-9 w-9 rounded-md flex items-center justify-center hover:bg-secondary-100 dark:hover:bg-secondary-800">
-                {theme === "light" ? <MdOutlineDarkMode className="h-5 w-5" /> : <MdOutlineLightMode className="h-5 w-5" />}
+                {theme === "light" ? <MdOutlineLightMode className="h-5 w-5" /> : <MdOutlineDarkMode className="h-5 w-5" />}
             </button>
         </form>
     )

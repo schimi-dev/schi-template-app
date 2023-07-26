@@ -12,7 +12,7 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
 
     return (
         <form
-            className="w-1/2 flex flex-col gap-6"
+            className="md:w-1/2 flex flex-col gap-6"
             spellCheck={false}
             autoComplete="off"
             action={updateProjectAction}
