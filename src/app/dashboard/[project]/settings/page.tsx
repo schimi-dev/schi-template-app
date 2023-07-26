@@ -4,7 +4,7 @@ import { findProject } from "@/server/lib/project";
 import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetadata";
 import { notFound } from "next/navigation";
 import UpdateProjetForm from "./UpdateProjectForm";
-import Button from "@/components/core/Button";
+import DeleteProjectButton from "./DeleteProjectButton";
 
 export default async function Page({ params }: { params: { project: string } }) {
 
@@ -41,13 +41,10 @@ export default async function Page({ params }: { params: { project: string } }) 
                         {"If you want to permanentrly delete this project and all of its related data, you can do so below."}
                     </p>
                     <div>
-                        <Button danger>
-                            Delete this project
-                        </Button>
+                        <DeleteProjectButton project={project} />
                     </div>
                 </div>
             </div>
-
         </main>
     )
 }

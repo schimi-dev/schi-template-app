@@ -18,61 +18,6 @@ export default function Layout({ params, children }: { params: { project: string
                             Settings
                         </Link>
                     </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={navigation.singleProjectSettings(params.project)}>
-                            Settings
-                        </Link>
-                    </li>
                 </ul>
             </nav>
             <div className="w-[calc(100%-240px)] ml-60">
