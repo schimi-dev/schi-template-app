@@ -21,7 +21,7 @@ export default function Error({ error, reset }: {
     })
 
     return (
-        <div className="bg-secondary-900 flex flex-col items-center justify-center h-screen gap-2">
+        <div className="flex flex-col items-center justify-center h-screen gap-2">
             {!isPending && <>
                 <p className="text-sm font-medium" >
                     Something went wrong!

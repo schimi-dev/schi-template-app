@@ -9,7 +9,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
     const projects = await findProjects(user.id, user.provider);
 
     return (
-        <div className="bg-secondary-900 flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen">
             <Header projects={projects} user={user} />
             {children}
         </div>
