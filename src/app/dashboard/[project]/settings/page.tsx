@@ -4,6 +4,7 @@ import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetad
 import { notFound } from "next/navigation";
 import UpdateProjetForm from "./UpdateProjectForm";
 import DeleteProjectButton from "./DeleteProjectButton";
+import DeleteProjectForm from "./DeleteProjectForm";
 
 export default async function Page({ params }: { params: { project: string } }) {
 
@@ -40,7 +41,9 @@ export default async function Page({ params }: { params: { project: string } }) 
                         {"If you want to permanentrly delete this project and all of its related data, you can do so below."}
                     </p>
                     <div>
-                        <DeleteProjectButton project={project} />
+                        <DeleteProjectButton>
+                            <DeleteProjectForm project={project} />
+                        </DeleteProjectButton>
                     </div>
                 </div>
             </div>
