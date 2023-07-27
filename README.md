@@ -11,31 +11,36 @@ This document contains information about the setup and design decisions. Moreove
 
 The following environment variables are version managed and can be found in the `.env` file of this project.
 
-* NEXT_PUBLIC_TITLE="My-App-Title"
+`NEXT_PUBLIC_TITLE=`
 
 ### Non-Version Managed
 
 The following environment variables are not version managed with the source code of this project. Use a `.env.local` file to configure them for your environment.
 
 #### Database
-MONGODB_URI=
+`MONGODB_URI=`
 
 #### Login Providers
 
 Okta
-* OKTA_ID=
-* OKTA_SECRET=
-* OKTA_ISSUER=
+* `OKTA_ID=`
+* `OKTA_SECRET=`
+* `OKTA_ISSUER=`
 
 Auth0
-* AUTH0_ID=
-* AUTH0_SECRET=
-* AUTH0_ISSUER=
+* `AUTH0_ID=`
+* `AUTH0_SECRET=`
+* `AUTH0_ISSUER=`
+
+Keycloak
+* `KEYCLOAK_ID=`
+* `KEYCLOAK_SECRET=`
+* `KEYCLOAK_ISSUER=`
 
 #### Authentication (NextAuth.js)
-* NEXTAUTH_URL=
-* NEXTAUTH_URL_INTERNAL=
-* NEXTAUTH_SECRET=
+* `NEXTAUTH_URL=`
+* `NEXTAUTH_URL_INTERNAL=`
+* `NEXTAUTH_SECRET=`
 
 ## Deployment
 
