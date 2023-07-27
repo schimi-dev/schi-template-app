@@ -35,7 +35,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
                 <h1 className="text-2xl font-medium text-center mb-4">
                     Create a new project
                 </h1>
-                <p className="text-sm font-medium text-center text-secondary-400 dark:text-secondary-500 mb-8">
+                <p className="text-sm font-medium text-center text-secondary-500 mb-8">
                     {"Projects are a demo resource within this app."}
                 </p>
                 <form
