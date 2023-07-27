@@ -15,7 +15,7 @@ export default function Input({
     required?: boolean,
     minLength?: number,
     maxLength?: number,
-    pattern?: RegExp
+    pattern?: string
 }) {
 
     return (
@@ -27,12 +27,11 @@ export default function Input({
             required={required}
             minLength={minLength}
             maxLength={maxLength}
-            pattern={pattern?.toString()}
+            pattern={pattern}
             type="text"
             spellCheck={false}
             autoComplete="off"
             className="border text-sm rounded block w-full dark:bg-[rgba(0,0,0,0.2)] border-[rgba(0,0,0,0.2)] hover:border-[rgba(0,0,0,0.3)] dark:border-[rgba(255,255,255,0.2)] dark:hover:border-[rgba(255,255,255,0.3)] focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 px-3 py-2"
-            
         />
     )
 }
