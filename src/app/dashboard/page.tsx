@@ -12,14 +12,9 @@ export default async function Page() {
     return (
         <div className="w-full">
             <main className="flex flex-col gap-7 max-w-3xl mx-auto px-5 py-10">
-                <div className="flex flex-col gap-1 -mb-1">
-                    <h1 className="text-2xl font-medium">
-                        Your Projects
-                    </h1>
-                    <p className="text-sm font-medium text-secondary-500">
-                        Select a project to continue to the details.
-                    </p>
-                </div>
+                <h1 className="text-2xl font-medium">
+                    {"Your projects"}
+                </h1>
                 <ul className="grid grid-cols-3 gap-4">
                     <li>
                         <Link
@@ -28,7 +23,7 @@ export default async function Page() {
                         >
                             <MdAddCircleOutline className="h-6 w-6 text-primary-500 dark:text-primary-400" />
                             <span className="text-xs text-secondary-500 dark:text-secondary-400">
-                                {"Create a new Project"}
+                                {"Create a new project"}
                             </span>
                         </Link>
                     </li>

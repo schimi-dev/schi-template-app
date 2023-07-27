@@ -11,7 +11,7 @@ export default function DeleteProjectForm({ project }: { project: TProject }) {
         >
             <input type="hidden" name="id" defaultValue={project.id} />
             <Submit danger>
-                Yes, delete
+                {"Yes, delete it"}
             </Submit>
         </form>
     )
