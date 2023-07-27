@@ -40,5 +40,4 @@ export default function Layout({ params, children }: { params: { project: string
             </div>
         </div>
     )
-
 }

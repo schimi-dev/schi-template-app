@@ -5,9 +5,10 @@ import { Project, TCreateProject, TUpdateProject } from "@/types/project";
 
 export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
-    let sortObj: Sort = {};
-    sortObj["createdAt"] = -1;
-    sortObj["_id"] = 1;
+    let sortObj: Sort = {
+        createdAt: -1,
+        _id: 1,
+    };
     const _projects = await _projectCollection
         .find({
             $and: [
@@ -41,7 +42,6 @@ export const findProject = cache(async (id: string, userAccountId: string, userA
 export const createProject = async (data: TCreateProject, userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
     const now = new Date();
-
     const { insertedId } = await _projectCollection.insertOne({
         ...data,
         createdAt: now,
@@ -49,10 +49,7 @@ export const createProject = async (data: TCreateProject, userAccountId: string,
         userAccountId,
         userAccountProvider,
     });
-    const projectQuery = { _id: new ObjectId(insertedId) };
-    const _project = await _projectCollection.findOne(projectQuery);
-    if (!_project) return null;
-    return toProject(_project);
+    return insertedId.toString();
 };
 
 export const updateProject = async (data: TUpdateProject, userAccountId: string, userAccountProvider: string) => {
