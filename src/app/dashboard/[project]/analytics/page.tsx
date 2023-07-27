@@ -3,9 +3,9 @@ import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetad
 export default function Page() {
 
     return (
-        <div className="px-5 py-10">
+        <main className="px-5 py-10">
             Analytics
-        </div>
+        </main>
     )
 }
 

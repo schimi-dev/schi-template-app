@@ -3,9 +3,9 @@ import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetad
 export default function Page() {
 
     return (
-        <div className="max-w-3xl mx-auto px-5 py-10">
+        <main className="max-w-3xl mx-auto px-5 py-10">
             Overview
-        </div>
+        </main>
     )
 }
 
