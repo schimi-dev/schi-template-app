@@ -1,4 +1,3 @@
-import Divider from "@/components/core/Divider";
 import getUser from "@/server/auth/getUser";
 import { findProject } from "@/server/lib/project";
 import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetadata";
@@ -24,14 +23,14 @@ export default async function Page({ params }: { params: { project: string } }) 
                     Manage your project settings
                 </p>
             </div>
-            <Divider />
+            <hr className="w-full border-t border-t-secondary-200 dark:border-t-secondary-800" />
             <div className="flex flex-col gap-4">
                 <h2 className="font-medium">
                     General
                 </h2>
                 <UpdateProjetForm project={project} />
             </div>
-            <Divider />
+            <hr className="w-full border-t border-t-secondary-200 dark:border-t-secondary-800" />
             <div className="flex flex-col  gap-4">
                 <h2 className="font-medium">
                     Delete project

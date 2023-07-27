@@ -7,7 +7,7 @@ export default function Layout({ params, children }: { params: { project: string
 
     return (
         <div>
-            <nav className="fixed left-0 top-14 border-r border-r-secondary-300 dark:border-r-secondary-700 h-[calc(100vh-56px)] w-56 overflow-auto">
+            <nav className="fixed left-0 top-14 border-r border-r-secondary-200 dark:border-r-secondary-800 h-[calc(100vh-56px)] w-56 overflow-auto">
                 <ul className="flex flex-col py-4">
                     <li>
                         <NavLink href={navigation.singleProjectOverview(params.project)}>
