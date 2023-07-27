@@ -3,13 +3,13 @@ import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetad
 export default function Page() {
 
     return (
-        <div className="max-w-3xl mx-auto px-5 py-10">
-            Overview
+        <div className="px-5 py-10">
+            Analytics
         </div>
     )
 }
 
-export const generateMetadata = makeGenerateProjectMetadata("Overview")
+export const generateMetadata = makeGenerateProjectMetadata("Analytics")
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";

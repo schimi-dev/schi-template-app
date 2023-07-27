@@ -1,7 +1,7 @@
 import navigation from "@/navigation";
 import { ReactNode } from "react";
 import NavLink from "./NavLink";
-import { MdOutlineDashboard, MdOutlineSettings } from "react-icons/md";
+import { MdOutlineDashboard, MdOutlineBuild, MdOutlineAnalytics, MdOutlineSettings } from "react-icons/md";
 
 export default function Layout({ params, children }: { params: { project: string }, children: ReactNode }) {
 
@@ -13,6 +13,18 @@ export default function Layout({ params, children }: { params: { project: string
                         <NavLink href={navigation.singleProjectOverview(params.project)}>
                             <MdOutlineDashboard className="h-4 w-4" />
                             Overview
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink href={navigation.singleProjectBuild(params.project)}>
+                            <MdOutlineBuild className="h-4 w-4" />
+                            Build
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink href={navigation.singleProjectAnalytics(params.project)}>
+                            <MdOutlineAnalytics className="h-4 w-4" />
+                            Analytics
                         </NavLink>
                     </li>
                     <li>

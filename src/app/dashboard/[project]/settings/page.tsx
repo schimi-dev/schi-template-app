@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { project: string } }) 
         notFound();
 
     return (
-        <main className="flex flex-col max-w-3xl gap-7 mx-auto px-5 py-10">
+        <main className="flex flex-col gap-7 max-w-3xl mx-auto px-5 py-10">
             <div className="flex flex-col gap-1 -mb-1">
                 <h1 className="text-2xl font-medium">
                     Project
