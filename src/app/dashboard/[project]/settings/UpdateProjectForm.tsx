@@ -33,7 +33,7 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
                 <TextArea
                     id={`${id}-description`}
                     name="description"
-                    defaultValue={project.description ?? ""}
+                    defaultValue={project.description}
                     maxLength={200}
                     rows={6}
                 />

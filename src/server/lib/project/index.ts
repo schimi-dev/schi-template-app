@@ -1,7 +1,7 @@
 import { WithId, Document, ObjectId, Sort } from "mongodb";
 import { cache } from "react";
 import clientPromise from "@/server/mongodb";
-import { Project, TCreateProject, TUpdateProject } from "@/types/project";
+import { Project, TMutateProject } from "@/types/project";
 
 export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
@@ -39,7 +39,7 @@ export const findProject = cache(async (id: string, userAccountId: string, userA
 });
 
 
-export const createProject = async (data: TCreateProject, userAccountId: string, userAccountProvider: string) => {
+export const createProject = async (data: TMutateProject, userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
     const now = new Date();
     const { insertedId } = await _projectCollection.insertOne({
@@ -52,8 +52,7 @@ export const createProject = async (data: TCreateProject, userAccountId: string,
     return insertedId.toString();
 };
 
-export const updateProject = async (data: TUpdateProject, userAccountId: string, userAccountProvider: string) => {
-    const { id, ...rest } = data;
+export const updateProject = async (id: string, data: TMutateProject, userAccountId: string, userAccountProvider: string) => {
     const projectQuery = {
         $and: [
             { _id: new ObjectId(id) },
@@ -63,7 +62,7 @@ export const updateProject = async (data: TUpdateProject, userAccountId: string,
     };
     const _projectCollection = await getProjectCollection();
     const patchOp = {
-        $set: { ...rest, lastUpdate: new Date() }
+        $set: { ...data, lastUpdate: new Date() }
     };
     const _project = await _projectCollection.findOneAndUpdate(projectQuery, patchOp, { returnDocument: "after" });
     if (!_project.value)

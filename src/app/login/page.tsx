@@ -12,10 +12,10 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
     const providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | undefined = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/api/auth/providers`, { cache: 'no-store' })
         .then(res => res.json());
 
-    if (!providers) throw new Error("Failed to fetch providers");
+    if (!providers)
+        throw new Error("Failed to fetch providers");
 
     const error = searchParams.error || null;
-
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
