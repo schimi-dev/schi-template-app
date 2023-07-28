@@ -1,21 +1,21 @@
-import locale from "@/locale";
+import lang from "@/lang";
 import { useCallback, useMemo } from "react";
 
 export default function useDatetime() {
 
     const displayDate = useCallback((date: Date) => {
         if (!date) return null;
-        return date.toLocaleDateString(locale.lang);
+        return date.toLocaleDateString(lang);
     }, [])
 
     const displayTime = useCallback((date: Date) => {
         if (!date) return null;
-        return date.toLocaleTimeString(locale.lang);
+        return date.toLocaleTimeString(lang);
     }, [])
 
     const displayDatetime = useCallback((date: Date) => {
         if (!date) return null;
-        return date.toLocaleString(locale.lang);
+        return date.toLocaleString(lang);
     }, [])
 
 

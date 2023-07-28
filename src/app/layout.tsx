@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import locale from '@/locale'
+import lang from '@/lang'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -20,7 +20,7 @@ export default function RootLayout({
     const theme = getTheme();
 
     return (
-        <html lang={locale.lang} className={theme === "light" ? "light" : "dark"}>
+        <html lang={lang} className={theme === "light" ? "light" : "dark"}>
             <body className={inter.className}>{children}</body>
         </html>
     )
