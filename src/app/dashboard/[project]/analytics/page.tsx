@@ -1,5 +1,7 @@
 import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetadata";
 
+export const generateMetadata = makeGenerateProjectMetadata("Analytics")
+
 export default function Page() {
 
     return (
@@ -9,7 +11,5 @@ export default function Page() {
     )
 }
 
-export const generateMetadata = makeGenerateProjectMetadata("Analytics")
-
-export const revalidate = 0;
 export const dynamic = "force-dynamic";
+export const revalidate = 0;

@@ -8,6 +8,10 @@ import getUser from "@/server/auth/getUser";
 import { createProjectAction } from "@/server/lib/project/actions";
 import type { Route } from "next";
 
+export const metadata = {
+    title: "New Project"
+}
+
 export default async function Page({ searchParams }: { searchParams: { backUrl?: string } }) {
 
     const id = "new-project-form";
@@ -70,8 +74,4 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
             </main>
         </div>
     )
-}
-
-export const metadata = {
-    title: "New Project"
 }

@@ -1,5 +1,7 @@
 import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetadata";
 
+export const generateMetadata = makeGenerateProjectMetadata("Build")
+
 export default function Page() {
 
     return (
@@ -8,7 +10,6 @@ export default function Page() {
         </main>
     )
 }
-export const generateMetadata = makeGenerateProjectMetadata("Build")
 
-export const revalidate = 0;
 export const dynamic = "force-dynamic";
+export const revalidate = 0;

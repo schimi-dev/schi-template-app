@@ -3,6 +3,10 @@ import { ClientSafeProvider, LiteralUnion } from "next-auth/react"
 import { BuiltInProviderType } from "next-auth/providers";
 import LoginButton from "./LoginButton";
 
+export const metadata = {
+    title: "Login"
+}
+
 export default async function Page({ searchParams }: { searchParams: { error?: string } }) {
 
     const providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | undefined = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/api/auth/providers`, { cache: 'no-store' })
@@ -40,9 +44,5 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
     )
 }
 
-export const metadata = {
-    title: "Login"
-}
-
-export const revalidate = 0;
 export const dynamic = "force-dynamic";
+export const revalidate = 0;

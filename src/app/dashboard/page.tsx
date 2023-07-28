@@ -4,6 +4,10 @@ import { findProjects } from "@/server/lib/project";
 import Link from "next/link";
 import { MdAddCircleOutline } from "react-icons/md";
 
+export const metadata = {
+    title: "Dashboard"
+}
+
 export default async function Page() {
 
     const user = await getUser();
@@ -49,9 +53,5 @@ export default async function Page() {
     )
 }
 
-export const metadata = {
-    title: "Dashboard"
-}
-
-export const revalidate = 0;
 export const dynamic = "force-dynamic";
+export const revalidate = 0;

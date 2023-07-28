@@ -6,6 +6,8 @@ import UpdateProjetForm from "./UpdateProjectForm";
 import DeleteProjectButton from "./DeleteProjectButton";
 import DeleteProjectForm from "./DeleteProjectForm";
 
+export const generateMetadata = makeGenerateProjectMetadata("Settings")
+
 export default async function Page({ params }: { params: { project: string } }) {
 
     const user = await getUser();
@@ -51,7 +53,5 @@ export default async function Page({ params }: { params: { project: string } }) 
     )
 }
 
-export const generateMetadata = makeGenerateProjectMetadata("Settings")
-
-export const revalidate = 0;
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
