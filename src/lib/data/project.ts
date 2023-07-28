@@ -1,7 +1,7 @@
 import { WithId, Document, ObjectId, Sort } from "mongodb";
 import { cache } from "react";
-import clientPromise from "@/lib/mongodb/clientPromise";
 import { Project, TMutateProject } from "@/types/project";
+import clientPromise from "../utils/clientPromise";
 
 export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
