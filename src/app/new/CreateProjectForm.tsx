@@ -1,40 +1,40 @@
-import { MutateProject, TProject } from "@/types/project";
 import Input from "@/components/core/Input";
 import Label from "@/components/core/Label";
 import Submit from "@/components/core/Submit";
 import TextArea from "@/components/core/TextArea";
-import { useId } from "react";
+import navigation from "@/navigation";
 import getUser from "@/server/auth/getUser";
-import { updateProject } from "@/server/lib/project";
-import { notFound } from "next/navigation";
+import { createProject } from "@/server/lib/project";
+import { MutateProject } from "@/types/project";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { useId } from "react";
 
-export default function UpdateProjetForm({ project }: { project: TProject }) {
-    async function updateProjectAction(formData: FormData) {
+export default function CreateProjectForm() {
+    async function createProjectAction(formData: FormData) {
         'use server'
         const user = await getUser();
         const data = MutateProject.parse(Object.fromEntries(formData));
-        const result = await updateProject(project.id, data, user.id, user.provider);
-        if (!result)
-            notFound();
+        const insertedId = await createProject(data, user.id, user.provider);
         revalidatePath("/");
+        redirect(navigation.singleProjectOverview(insertedId));
     }
 
-    const id = useId()
+    const id = useId();
 
     return (
         <form
-            className="md:w-1/2 flex flex-col gap-6"
+            className="flex flex-col gap-7"
             spellCheck={false}
             autoComplete="off"
-            action={updateProjectAction}
+            action={createProjectAction}
         >
             <div>
-                <Label htmlFor={`${id}-name`}>Name</Label>
+                <Label htmlFor={id}>Name</Label>
                 <Input
-                    id={`${id}-name`}
+                    id={id}
                     name="name"
-                    defaultValue={project.name}
+                    autoFocus
                     required
                     maxLength={40}
                 />
@@ -44,13 +44,12 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
                 <TextArea
                     id={`${id}-description`}
                     name="description"
-                    defaultValue={project.description}
                     maxLength={200}
                     rows={6}
                 />
             </div>
-            <div>
-                <Submit>Update</Submit>
+            <div className="flex flex-row items-center justify-center">
+                <Submit>Create project</Submit>
             </div>
         </form>
     )

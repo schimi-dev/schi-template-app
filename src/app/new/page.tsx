@@ -1,20 +1,14 @@
 import BackLink from "@/components/core/BackLink"
-import Input from "@/components/core/Input";
-import Label from "@/components/core/Label";
-import Submit from "@/components/core/Submit";
-import TextArea from "@/components/core/TextArea";
 import navigation from "@/navigation"
 import getUser from "@/server/auth/getUser";
-import { createProjectAction } from "@/server/lib/project/actions";
 import type { Route } from "next";
+import CreateProjectForm from "./CreateProjectForm";
 
 export const metadata = {
     title: "New Project"
 }
 
 export default async function Page({ searchParams }: { searchParams: { backUrl?: string } }) {
-
-    const id = "new-project-form";
 
     const user = await getUser();
 
@@ -42,35 +36,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
                 <p className="text-sm text-center text-secondary-500 mb-8">
                     {"Projects are personal resources associated with your account and can only be viewed and edited by you."}
                 </p>
-                <form
-                    className="flex flex-col gap-7"
-                    spellCheck={false}
-                    autoComplete="off"
-                    action={createProjectAction}
-                >
-                    <div>
-                        <Label htmlFor={`${id}-name`}>Name</Label>
-                        <Input
-                            id={`${id}-name`}
-                            name="name"
-                            autoFocus
-                            required
-                            maxLength={40}
-                        />
-                    </div>
-                    <div>
-                        <Label htmlFor={`${id}-description`}>Description</Label>
-                        <TextArea
-                            id={`${id}-description`}
-                            name="description"
-                            maxLength={200}
-                            rows={6}
-                        />
-                    </div>
-                    <div className="flex flex-row items-center justify-center">
-                        <Submit>Create project</Submit>
-                    </div>
-                </form>
+                <CreateProjectForm />
             </main>
         </div>
     )
