@@ -20,8 +20,8 @@ export default function Button({
             disabled={pending}
             onClick={onClick}
             className={danger ?
-                "text-sm font-medium rounded relative flex items-center justify-center shadow-md text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-error-500" :
-                "text-sm font-medium rounded relative flex items-center justify-center shadow-md text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-primary-500"
+                "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-error-500" :
+                "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-primary-500"
             }
         >
             <span
