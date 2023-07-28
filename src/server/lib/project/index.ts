@@ -66,7 +66,8 @@ export const updateProject = async (data: TUpdateProject, userAccountId: string,
         $set: { ...rest, lastUpdate: new Date() }
     };
     const _project = await _projectCollection.findOneAndUpdate(projectQuery, patchOp, { returnDocument: "after" });
-    if (!_project.value) return null;
+    if (!_project.value)
+        return null;
     return toProject(_project.value);
 };
 
