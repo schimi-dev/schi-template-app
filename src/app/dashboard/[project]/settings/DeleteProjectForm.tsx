@@ -1,7 +1,7 @@
 import Submit from "@/components/core/Submit";
 import navigation from "@/navigation";
-import getUser from "@/server/auth/getUser";
-import { deleteProject } from "@/server/lib/project";
+import getUser from "@/lib/auth/getUser";
+import { deleteProject } from "@/lib/data/project";
 import { TProject } from "@/types/project";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

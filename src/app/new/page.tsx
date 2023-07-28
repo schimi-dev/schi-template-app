@@ -1,6 +1,6 @@
 import BackLink from "@/components/core/BackLink"
 import navigation from "@/navigation"
-import getUser from "@/server/auth/getUser";
+import getUser from "@/lib/auth/getUser";
 import type { Route } from "next";
 import CreateProjectForm from "./CreateProjectForm";
 

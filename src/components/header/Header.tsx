@@ -1,5 +1,5 @@
-import getUser from "@/server/auth/getUser";
-import { findProjects } from "@/server/lib/project";
+import getUser from "@/lib/auth/getUser";
+import { findProjects } from "@/lib/data/project";
 import HeaderClientComponent from "./HeaderClientComponent";
 import ToggleThemeForm from "./ToggleThemeForm";
 import LogoutButton from "./LogoutButton";

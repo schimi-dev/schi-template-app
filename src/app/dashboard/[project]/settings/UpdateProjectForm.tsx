@@ -4,8 +4,8 @@ import Label from "@/components/core/Label";
 import Submit from "@/components/core/Submit";
 import TextArea from "@/components/core/TextArea";
 import { useId } from "react";
-import getUser from "@/server/auth/getUser";
-import { updateProject } from "@/server/lib/project";
+import getUser from "@/lib/auth/getUser";
+import { updateProject } from "@/lib/data/project";
 import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 

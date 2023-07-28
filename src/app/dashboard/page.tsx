@@ -1,6 +1,6 @@
 import navigation from "@/navigation";
-import getUser from "@/server/auth/getUser";
-import { findProjects } from "@/server/lib/project";
+import getUser from "@/lib/auth/getUser";
+import { findProjects } from "@/lib/data/project";
 import Link from "next/link";
 import { MdAddCircleOutline } from "react-icons/md";
 

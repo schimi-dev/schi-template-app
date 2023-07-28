@@ -76,7 +76,7 @@ For auth we consider two things:
 * React Server Components for fetching data
 * Server Actions for mutating data
 
-Both can rely on the `@/server/auth/getUser.tsx` function that does a `redirect()` to the login page if the user is not authenticated.
+Both can rely on the `@/lib/auth/getUser.tsx` function that does a `redirect()` to the login page if the user is not authenticated.
 
 #### React Server Components
 React Server Components form the most central part of handling authentication and adjusting the UI accordingly (e.g. showing the Login page by using `redirect(navigation.login)` when no user is present or the session has timed out). Having this component oriented way of doing Login page redirects helps to avoid edge cases compared to using middleware. 

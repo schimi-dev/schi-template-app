@@ -3,7 +3,7 @@ import lang from '@/lang'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import getTheme from '@/server/utils/getTheme'
+import getTheme from '@/lib/utils/getTheme'
 
 const inter = Inter({ subsets: ['latin'], fallback: ['Arial', 'sans-serif'] })
 

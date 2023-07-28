@@ -1,4 +1,4 @@
-import getTheme from "@/server/utils/getTheme";
+import getTheme from "@/lib/utils/getTheme";
 import { cookies } from "next/headers";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 

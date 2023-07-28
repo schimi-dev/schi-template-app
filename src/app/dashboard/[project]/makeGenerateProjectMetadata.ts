@@ -1,5 +1,5 @@
-import getOptionalUser from "../auth/getOptionalUser";
-import { findProject } from "../lib/project";
+import getOptionalUser from "@/lib/auth/getOptionalUser";
+import { findProject } from "@/lib/data/project";
 
 export default function makeGenerateProjectMetadata(routeName: string) {
     async function generateMetadata({ params }: { params: { project: string } }) {

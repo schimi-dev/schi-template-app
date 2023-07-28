@@ -4,7 +4,7 @@ import authOptions from "./authOptions";
 
 const getOptionalUser = cache(async () => {
     const session = await getServerSession(authOptions);
-    return session?.user || null;
+    return session?.user ?? null;
 });
 
 export default getOptionalUser;

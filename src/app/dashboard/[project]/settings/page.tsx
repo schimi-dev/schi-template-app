@@ -1,10 +1,10 @@
-import getUser from "@/server/auth/getUser";
-import { findProject } from "@/server/lib/project";
-import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetadata";
+import getUser from "@/lib/auth/getUser";
+import { findProject } from "@/lib/data/project";
 import { notFound } from "next/navigation";
 import UpdateProjetForm from "./UpdateProjectForm";
 import DeleteProjectButton from "./DeleteProjectButton";
 import DeleteProjectForm from "./DeleteProjectForm";
+import makeGenerateProjectMetadata from "../makeGenerateProjectMetadata";
 
 export const generateMetadata = makeGenerateProjectMetadata("Settings")
 

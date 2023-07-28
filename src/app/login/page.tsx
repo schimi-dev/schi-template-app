@@ -15,7 +15,7 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
     if (!providers)
         throw new Error("Failed to fetch providers");
 
-    const error = searchParams.error || null;
+    const error = searchParams.error ?? null;
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">

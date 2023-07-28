@@ -1,4 +1,4 @@
-import makeGenerateProjectMetadata from "@/server/utils/makeGenerateProjectMetadata";
+import makeGenerateProjectMetadata from "../makeGenerateProjectMetadata";
 
 export const generateMetadata = makeGenerateProjectMetadata("Overview")
 
