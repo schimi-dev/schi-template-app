@@ -1,22 +1,19 @@
 import { z } from "zod";
 
-const Project = z.object({
-    id: z.string(),
+const ProjectSettings = z.object({
     name: z.string().min(1).max(40),
     description: z.string().max(200),
-    image: z.string().nullable().optional(),
+});
+
+const Project = z.object({
+    id: z.string(),
     createdAt: z.date(),
     lastUpdate: z.date(),
     userAccountId: z.string(),
     userAccountProvider: z.string(),
-});
+}).merge(ProjectSettings);
 
-const MutateProject = z.object({
-    name: z.string().min(1).max(40),
-    description: z.string().max(200),
-});
+export { ProjectSettings, Project };
 
-export { Project, MutateProject };
-
+export type TProjectSettings = z.infer<typeof ProjectSettings>;
 export type TProject = z.infer<typeof Project>;
-export type TMutateProject = z.infer<typeof MutateProject>;

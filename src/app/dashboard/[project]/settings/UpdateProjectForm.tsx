@@ -1,4 +1,4 @@
-import { MutateProject, TProject } from "@/types/project";
+import { ProjectSettings, TProject } from "@/types/project";
 import Input from "@/components/core/Input";
 import Label from "@/components/core/Label";
 import Submit from "@/components/core/Submit";
@@ -13,7 +13,7 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
     async function updateProjectAction(formData: FormData) {
         'use server'
         const user = await getUser();
-        const data = MutateProject.parse(Object.fromEntries(formData));
+        const data = ProjectSettings.parse(Object.fromEntries(formData));
         const result = await updateProject(project.id, data, user.id, user.provider);
         if (!result)
             notFound();

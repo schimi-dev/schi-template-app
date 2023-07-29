@@ -1,7 +1,7 @@
 import { WithId, Document, ObjectId, Sort } from "mongodb";
 import { cache } from "react";
-import { Project, TMutateProject } from "@/types/project";
-import clientPromise from "../utils/clientPromise";
+import { Project, TProjectSettings } from "@/types/project";
+import clientPromise from "./clientPromise";
 
 export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
@@ -39,7 +39,7 @@ export const findProject = cache(async (id: string, userAccountId: string, userA
 });
 
 
-export const createProject = async (data: TMutateProject, userAccountId: string, userAccountProvider: string) => {
+export const createProject = async (data: TProjectSettings, userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
     const now = new Date();
     const { insertedId } = await _projectCollection.insertOne({
@@ -52,7 +52,7 @@ export const createProject = async (data: TMutateProject, userAccountId: string,
     return insertedId.toString();
 };
 
-export const updateProject = async (id: string, data: TMutateProject, userAccountId: string, userAccountProvider: string) => {
+export const updateProject = async (id: string, data: TProjectSettings, userAccountId: string, userAccountProvider: string) => {
     const projectQuery = {
         $and: [
             { _id: new ObjectId(id) },
@@ -65,8 +65,10 @@ export const updateProject = async (id: string, data: TMutateProject, userAccoun
         $set: { ...data, lastUpdate: new Date() }
     };
     const _project = await _projectCollection.findOneAndUpdate(projectQuery, patchOp, { returnDocument: "after" });
-    if (!_project.value)
+    if (!_project.value){
+        console.error(`Could not find and update project with id ${id}`);
         return null;
+    }
     return toProject(_project.value);
 };
 
