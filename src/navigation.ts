@@ -12,7 +12,6 @@ const navigation = {
     login,
     dashboard,
     newProject,
-    _singleProject,
     singleProjectOverview,
     singleProjectBuild,
     singleProjectAnalytics,

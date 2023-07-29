@@ -14,15 +14,10 @@ export default function SelectProjectButton({ projects, project }: { projects: T
 
     const selectProject = (projectId: string) => {
         const segments = pathname.split("/").filter(x => x !== "");
-        if (segments.length === 3) {
-            // We are on the project level so we can just replace the project id
-            segments[1] = projectId;
-            push(`/${segments.join("/")}` as Route)
-        }
-        else {
-            // We are not on the project level, so we go to the project overview of the selected project
-            push(navigation.singleProjectOverview(projectId))
-        }
+        if (segments.length > 3)
+            segments.splice(3, Infinity);
+        segments[1] = projectId;
+        push(`/${segments.join("/")}` as Route)
     }
 
     return (
