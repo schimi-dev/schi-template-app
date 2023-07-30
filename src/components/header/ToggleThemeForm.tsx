@@ -5,7 +5,7 @@ import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 export default function ToggleThemeForm() {
     const theme = getTheme();
 
-    async function changeThemeAction() {
+    async function toggleThemeAction() {
         'use server'
         cookies().set({
             name: "theme",
@@ -17,7 +17,7 @@ export default function ToggleThemeForm() {
     }
 
     return (
-        <form action={changeThemeAction} className="ml-auto">
+        <form action={toggleThemeAction} className="ml-auto">
             <button type="submit" className="h-9 w-9 rounded-md flex items-center justify-center hover:bg-secondary-100 dark:hover:bg-secondary-800">
                 {theme === "light" ? <MdOutlineLightMode className="h-5 w-5" /> : <MdOutlineDarkMode className="h-5 w-5" />}
             </button>
