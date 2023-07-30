@@ -1,6 +1,6 @@
 'use client'
 
-import useProjectParam from "./useProjectParam";
+import useProjectParam from "@/hooks/useProjectParam";
 
 export default function Seperator() {
     const projectParam = useProjectParam();

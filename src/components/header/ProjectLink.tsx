@@ -4,7 +4,7 @@ import navigation from "@/navigation"
 import { TProject } from "@/types/project"
 import SelectProjectButton from "./SelectProjectButton";
 import BreadcrumbLink from "./BreadcrumbLink";
-import useProjectParam from "./useProjectParam";
+import useProjectParam from "@/hooks/useProjectParam";
 
 export default function ProjectLink({ projects }: { projects: TProject[] }) {
 
