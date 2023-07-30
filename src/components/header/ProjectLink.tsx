@@ -4,12 +4,12 @@ import navigation from "@/navigation"
 import { TProject } from "@/types/project"
 import SelectProjectButton from "./SelectProjectButton";
 import BreadcrumbLink from "./BreadcrumbLink";
-import useProjectParam from "@/hooks/useProjectParam";
+import useProjectId from "@/hooks/useProjectId";
 
 export default function ProjectLink({ projects }: { projects: TProject[] }) {
 
-    const projectParam = useProjectParam();
-    const project = projectParam ? projects.find(project => project.id === projectParam) : null;
+    const projectId = useProjectId();
+    const project = projectId ? projects.find(project => project.id === projectId) : null;
 
     // Returning `null` is a suitable approach because functionality that is only available in Client Components is needed to detect if this component should be rendered.
     // That way, the header of the app can remain a Server Component and this component can detect based on the dynamic params if it should render anything.

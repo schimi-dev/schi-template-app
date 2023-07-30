@@ -8,10 +8,10 @@ import makeGenerateProjectMetadata from "../makeGenerateProjectMetadata";
 
 export const generateMetadata = makeGenerateProjectMetadata("Settings")
 
-export default async function Page({ params }: { params: { project: string } }) {
+export default async function Page({ params }: { params: { projectId: string } }) {
 
     const user = await getUser();
-    const project = await findProject(params.project, user.id, user.provider)
+    const project = await findProject(params.projectId, user.id, user.provider)
 
     if (!project)
         notFound();
