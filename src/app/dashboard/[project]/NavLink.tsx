@@ -22,5 +22,4 @@ export default function NavLink<T extends string>({ href, children }: { href: Ro
             {children}
         </Link>
     )
-
 }

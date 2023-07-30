@@ -38,7 +38,6 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
                         </p>
                     }
                 </div>
-
             </main>
         </div>
     )

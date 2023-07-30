@@ -24,8 +24,7 @@ export default function Button({
                 "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-primary-500"
             }
         >
-            <span
-                className={pending ? "invisible" : "visible"}>
+            <span className={pending ? "invisible" : "visible"}>
                 {children}
             </span>
             {pending && <div role="status" className="absolute left-1/2 -translate-x-1/2">
