@@ -6,7 +6,6 @@ import TextArea from "@/components/core/TextArea";
 import { useId } from "react";
 import getUser from "@/lib/auth/getUser";
 import { updateProject } from "@/lib/data/project";
-import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 export default function UpdateProjetForm({ project }: { project: TProject }) {
@@ -16,7 +15,7 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
         const data = ProjectSettings.parse(Object.fromEntries(formData));
         const result = await updateProject(project.id, data, user.id, user.provider);
         if (!result)
-            notFound();
+            throw new Error(`Failed to update project with id ${project.id}`);
         revalidatePath("/");
     }
 

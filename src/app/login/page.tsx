@@ -34,7 +34,7 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
                     }
                     {error &&
                         <p className="text-sm text-center text-error-500 dark:text-error-400 font-normal">
-                            {`Failed to log in`}
+                            {"Failed to log in"}
                         </p>
                     }
                 </div>
