@@ -1,3 +1,4 @@
+import 'server-only'
 import { WithId, Document, ObjectId, Sort } from "mongodb";
 import { cache } from "react";
 import { Project, TProjectSettings } from "@/types/project";

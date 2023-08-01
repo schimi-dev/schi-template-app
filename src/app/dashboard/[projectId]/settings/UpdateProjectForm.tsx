@@ -1,3 +1,4 @@
+import 'server-only'
 import { ProjectSettings, TProject } from "@/types/project";
 import Input from "@/components/core/Input";
 import Label from "@/components/core/Label";

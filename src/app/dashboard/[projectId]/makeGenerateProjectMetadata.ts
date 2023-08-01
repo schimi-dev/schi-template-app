@@ -1,3 +1,4 @@
+import 'server-only'
 import getOptionalUser from "@/lib/auth/getOptionalUser";
 import { findProject } from "@/lib/data/project";
 
