@@ -20,8 +20,8 @@ export default function Button({
             disabled={pending}
             onClick={onClick}
             className={danger ?
-                "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-error-500" :
-                "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none py-2 px-4 bg-primary-500"
+                "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none disabled:opacity-80 dark:disabled:opacity-40 py-2 px-4 bg-error-500" :
+                "text-sm font-medium rounded relative flex items-center justify-center shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.15)] to-[rgba(0,0,0,0.15)] disabled:hover:bg-none disabled:opacity-80 dark:disabled:opacity-40 py-2 px-4 bg-primary-500"
             }
         >
             <span className={pending ? "invisible" : "visible"}>
@@ -31,8 +31,8 @@ export default function Button({
                 <svg
                     aria-hidden="true"
                     className={danger ?
-                        "inline w-4 h-4 animate-spin text-error-300 fill-white" :
-                        "inline w-4 h-4 animate-spin text-primary-300 fill-white"
+                        "inline w-5 h-5 animate-spin text-error-300 fill-white" :
+                        "inline w-5 h-5 animate-spin text-primary-300 fill-white"
                     }
                     viewBox="0 0 100 101"
                     fill="none"
