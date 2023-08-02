@@ -1,4 +1,3 @@
-import 'server-only'
 import getUser from "@/lib/auth/getUser";
 import { findProjects } from "@/lib/data/project";
 import UserLink from "./UserLink";

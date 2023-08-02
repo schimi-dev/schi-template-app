@@ -1,4 +1,3 @@
-import 'server-only'
 import Input from "@/components/core/Input";
 import Label from "@/components/core/Label";
 import Submit from "@/components/core/Submit";

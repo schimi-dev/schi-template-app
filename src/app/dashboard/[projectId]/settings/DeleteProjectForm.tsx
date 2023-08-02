@@ -1,4 +1,3 @@
-import 'server-only'
 import Submit from "@/components/core/Submit";
 import navigation from "@/navigation";
 import getUser from "@/lib/auth/getUser";

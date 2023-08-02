@@ -1,4 +1,3 @@
-import 'server-only'
 import getTheme from "@/lib/utils/getTheme";
 import { cookies } from "next/headers";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
