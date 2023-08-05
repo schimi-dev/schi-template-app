@@ -66,7 +66,7 @@ export const updateProject = async (id: string, data: TProjectSettings, userAcco
         $set: { ...data, lastUpdate: new Date() }
     };
     const _project = await _projectCollection.findOneAndUpdate(projectQuery, patchOp, { returnDocument: "after" });
-    if (!_project.value){
+    if (!_project.value) {
         console.error(`Could not find and update project with id ${id}`);
         return null;
     }
