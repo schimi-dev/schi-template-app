@@ -1,7 +1,7 @@
 import 'server-only'
 import { WithId, Document, ObjectId, Sort } from "mongodb";
 import { cache } from "react";
-import { Project, TProjectSettings } from "@/types/project";
+import { ProjectSchema, TProjectSettings } from "@/types/project";
 import clientPromise from "./clientPromise";
 
 export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
@@ -87,7 +87,7 @@ export const deleteProject = async (id: string, userAccountId: string, userAccou
 
 const toProject = (projectDocument: WithId<Document>) => {
     const { _id, ...rest } = projectDocument;
-    const project = Project.parse({ id: _id.toString(), ...rest });
+    const project = ProjectSchema.parse({ id: _id.toString(), ...rest });
     return project;
 }
 

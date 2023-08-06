@@ -5,7 +5,7 @@ import TextArea from "@/components/core/TextArea";
 import navigation from "@/navigation";
 import getUser from "@/lib/auth/getUser";
 import { createProject } from "@/lib/data/project";
-import { ProjectSettings } from "@/types/project";
+import { ProjectSettingsSchema } from "@/types/project";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { useId } from "react";
@@ -14,7 +14,7 @@ export default function CreateProjectForm() {
     async function createProjectAction(formData: FormData) {
         'use server'
         const user = await getUser();
-        const data = ProjectSettings.parse(Object.fromEntries(formData));
+        const data = ProjectSettingsSchema.parse(Object.fromEntries(formData));
         const insertedId = await createProject(data, user.id, user.provider);
         revalidatePath("/");
         redirect(navigation.singleProjectOverview(insertedId));

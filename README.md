@@ -276,3 +276,6 @@ https://nextjs.org/docs/app/api-reference/next-config-js/output#automatically-co
 
 ### Generate Secret for NextAuth.js
 https://generate-secret.vercel.app/32
+
+## TODO
+* Tailwind should be configured via a Typescript config file within one of the next versions of `create-next-app`.

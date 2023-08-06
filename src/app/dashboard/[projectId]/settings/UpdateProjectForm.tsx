@@ -1,4 +1,4 @@
-import { ProjectSettings, TProject } from "@/types/project";
+import { ProjectSettingsSchema, TProject } from "@/types/project";
 import Input from "@/components/core/Input";
 import Label from "@/components/core/Label";
 import Submit from "@/components/core/Submit";
@@ -12,7 +12,7 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
     async function updateProjectAction(formData: FormData) {
         'use server'
         const user = await getUser();
-        const data = ProjectSettings.parse(Object.fromEntries(formData));
+        const data = ProjectSettingsSchema.parse(Object.fromEntries(formData));
         const result = await updateProject(project.id, data, user.id, user.provider);
         if (!result)
             throw new Error(`Failed to update project with id ${project.id}`);
