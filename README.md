@@ -229,6 +229,7 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * Support scroll: false for Link component for app router: https://github.com/vercel/next.js/pull/51869
 * Upgrade vendored React: https://github.com/vercel/next.js/pull/51779
 * router: apply server actions in a similar way to router.refresh(): https://github.com/vercel/next.js/pull/53373
+* Consolidate Server and Routing process into one process: https://github.com/vercel/next.js/pull/53523
 
 ## App Router - Issues
 * Using redirect after revalidateTag(), revalidatePath() or cookies().set() in server actions do not update the layouts or the back cache: https://github.com/vercel/next.js/issues/52075
