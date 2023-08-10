@@ -9,11 +9,11 @@ dependencies:
     specifier: 1.7.16
     version: 1.7.16(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
-    specifier: 20.4.7
-    version: 20.4.7
+    specifier: 20.4.9
+    version: 20.4.9
   '@types/react':
-    specifier: 18.2.18
-    version: 18.2.18
+    specifier: 18.2.20
+    version: 18.2.20
   '@types/react-dom':
     specifier: 18.2.7
     version: 18.2.7
@@ -33,8 +33,8 @@ dependencies:
     specifier: 13.4.14-canary.1
     version: 13.4.14-canary.1(react-dom@18.2.0)(react@18.2.0)
   next-auth:
-    specifier: 4.22.3
-    version: 4.22.3(next@13.4.14-canary.1)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.22.5
+    version: 4.22.5(next@13.4.14-canary.1)(react-dom@18.2.0)(react@18.2.0)
   postcss:
     specifier: 8.4.27
     version: 8.4.27
@@ -324,8 +324,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: false
 
-  /@types/node@20.4.7:
-    resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
+  /@types/node@20.4.9:
+    resolution: {integrity: sha512-8e2HYcg7ohnTUbHk8focoklEQYvemQmu9M/f43DZVx43kHn0tE3BY/6gSDxS7k0SprtS0NHvj+L80cGLnoOUcQ==}
     dev: false
 
   /@types/prop-types@15.7.5:
@@ -335,11 +335,11 @@ packages:
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
-      '@types/react': 18.2.18
+      '@types/react': 18.2.20
     dev: false
 
-  /@types/react@18.2.18:
-    resolution: {integrity: sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==}
+  /@types/react@18.2.20:
+    resolution: {integrity: sha512-WKNtmsLWJM/3D5mG4U84cysVY31ivmyw85dE84fOCk5Hx78wezB/XEjVPWl2JTZ5FkEeaTJf+VgUAUn3PE7Isw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -357,7 +357,7 @@ packages:
   /@types/whatwg-url@8.2.2:
     resolution: {integrity: sha512-FtQu10RWgn3D9U4aazdwIE2yzphmTJREDqNdODHrbrZmmMqI0vMheC/6NE/J1Yveaj8H+ela+YwWTjq5PGmuhA==}
     dependencies:
-      '@types/node': 20.4.7
+      '@types/node': 20.4.9
       '@types/webidl-conversions': 7.0.0
     dev: false
 
@@ -1927,8 +1927,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: false
 
-  /next-auth@4.22.3(next@13.4.14-canary.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-XAgy9xV3J2eJOXrQhmxdjV6MLM29ibm6WtMXc3KY6IPZeApf+SuBuPvlqCUfbu5YsAzlg9WSw6u01dChTfeZOA==}
+  /next-auth@4.22.5(next@13.4.14-canary.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-zPVEpqDp4cx1y0HbonCSrz2sA4qw0grTMd/S0PezUKXvDzmVemtsJnfNK/xo5pO2sz5ilM541+EVCTp9QoRLbA==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
