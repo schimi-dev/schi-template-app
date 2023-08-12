@@ -226,18 +226,21 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 **Pitfall:** Currently url changes made in a middleware (e.g. Internationalization Middleware) seem to not be applied for redirects (via `redirect`) in Server Actions. E.g. if a Server Action would trigger a redirect to `/login` and a middleware would prefix urls with the current lang (e.g. `/en/login`) the url displayed in the browser would still be `/login` altough the correct page for the `/[lang]/login` route is shown in the browser. Ensuring that redirects in Server Actions already have the current locale is a good idea anyways. For now, Internationalization Middleware should only be applied for the base path `/` to not interfer whith Server Actions and to enforce the programmer to always include the current language in redirects.
 
 ## App Router - Pull Requests
-* Support scroll: false for Link component for app router: https://github.com/vercel/next.js/pull/51869
 * Upgrade vendored React: https://github.com/vercel/next.js/pull/51779
-* router: apply server actions in a similar way to router.refresh(): https://github.com/vercel/next.js/pull/53373
+* Support scroll: false for Link component for app router: https://github.com/vercel/next.js/pull/51869
 * Separate routing code from render servers: https://github.com/vercel/next.js/pull/52492
+* router: apply server actions in a similar way to router.refresh(): https://github.com/vercel/next.js/pull/53373
 * Consolidate Server and Routing process into one process: https://github.com/vercel/next.js/pull/53523
 
 ## App Router - Issues
-* Using redirect after revalidateTag(), revalidatePath() or cookies().set() in server actions do not update the layouts or the back cache: https://github.com/vercel/next.js/issues/52075
 * [NEXT-1189] metadata not updated on navigation with experimental.serverActions set to true: https://github.com/vercel/next.js/issues/49409
+* Using redirect after revalidateTag(), revalidatePath() or cookies().set() in server actions do not update the layouts or the back cache: https://github.com/vercel/next.js/issues/52075
 * Error: connect ECONNREFUSED: https://github.com/vercel/next.js/issues/52150
 * Starting at 13.4.13-canary.0 Internal Server Error due to connection refused: https://github.com/vercel/next.js/issues/53171
 * Custom process.env variables not available in docker standalone output: https://github.com/vercel/next.js/issues/53367
+* [Routing] Using redirect from server action always uses "replace" redirect type: https://github.com/vercel/next.js/issues/53911
+* Docs: Server Actions - clarify "... compose additional behaviour with Client Actions" and add an Example for it: https://github.com/vercel/next.js/issues/53929
+
 ## Tooling
 ### General
 * Typescript
