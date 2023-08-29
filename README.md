@@ -105,6 +105,12 @@ Schema validation via `zod` is done especially for two aspects:
 ### Progressive Enhancement for all forms
 All forms should be built in a way that they support Progressive Enhancement.
 
+### Colocate Server Actions
+Server Actions are colocated with the components using them.
+
+### Do not use index files
+In this app no files named `index.ts` or `index.tsx` are used.
+
 ## Pitfalls
 
 This section includes the most relevant pitfalls that developers might run into.
