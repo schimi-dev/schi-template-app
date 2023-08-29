@@ -41,3 +41,6 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
         </div>
     )
 }
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
