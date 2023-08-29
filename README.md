@@ -231,6 +231,7 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * Separate routing code from render servers: https://github.com/vercel/next.js/pull/52492
 * router: apply server actions in a similar way to router.refresh(): https://github.com/vercel/next.js/pull/53373
 * Consolidate Server and Routing process into one process: https://github.com/vercel/next.js/pull/53523
+* Forms and mutations docs.: https://github.com/vercel/next.js/pull/54314
 
 ## App Router - Issues
 * [NEXT-1189] metadata not updated on navigation with experimental.serverActions set to true: https://github.com/vercel/next.js/issues/49409
@@ -240,6 +241,9 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * Custom process.env variables not available in docker standalone output: https://github.com/vercel/next.js/issues/53367
 * [Routing] Using redirect from server action always uses "replace" redirect type: https://github.com/vercel/next.js/issues/53911
 * Docs: Server Actions - clarify "... compose additional behaviour with Client Actions" and add an Example for it: https://github.com/vercel/next.js/issues/53929
+
+## App Router - Discussions
+* Deep Dive: Caching and Revalidating: https://github.com/vercel/next.js/discussions/54075
 
 ## Tooling
 ### General
