@@ -69,6 +69,11 @@ https://nextjs.org/docs/app/api-reference/next-config-js/output#automatically-co
 #### Operating and Logging
 On Linux this app can be operated via `Systemd`. Environment variables can be configered in the corresponding unit files or via a `.env.local` file. Logging in this application is done to stdout and stderr. These logs can be accessed via `journalctl` on the server. So, handling of logs is delegated to the `Systemd` software suite.
 
+Maybe it is required to configure these Environment Variables for self-hosting:
+* NODE_ENV=
+* HOSTNAME=
+* PORT=
+
 #### Load Balancing
 The backend is a stateless IO system. So, load balancing works without session affinity.
 
@@ -92,6 +97,14 @@ Server Actions can trigger redirects, which is a nice way of handling e.g. a ses
 ### Links vs. `router.push()`
 We use Links for all things that can be accessed on the screen with JS disabled. All elements that can only appear on the screen via using JS (e.g. Popper, Menu) we use `router.push()` because prefetching does not really have an advantage in this situation. When opening such a Popper/Menu the user might navigate away from that page before prefetching for all Links that get visible in such a situation is finished.
 
+### Using `zod` for schema validation
+Schema validation via `zod` is done especially for two aspects:
+* Parsing Documents retreived/returned from the database and creating the corresponding objects.
+* Validating `FormData` in Server Actions: https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations#form-validation
+
+### Progressive Enhancement for all forms
+All forms should be built in a way that they support Progressive Enhancement.
+
 ## Pitfalls
 
 This section includes the most relevant pitfalls that developers might run into.
@@ -107,7 +120,7 @@ We customize forms and inputs to prevent potentially annoying browser behaviour:
 ### CSS
 We need to apply the correct color-scheme when allowing the user to manually toggle dark and light theme. Thus, we set `color-scheme: dark;` and `color-scheme: light;` in the corresponding classes in `globals.css`.
 
-Moreover, we set the background color for the body also in `globals.css`. While this is redundant and could be done by `Tailwind` alone, we still want to set this for the whole document because it helps preventing edge cases, where e.g. opening a Popper/Menu leads to a vertical scrollbar appearing, because it is too wide for a small screen and then fully scolling this popper into the view leads to the original Browser-default background color appear outside of where your `Tailwind` component defining the background has its boundaries.
+Moreover, we set the background color for the body also in `globals.css`. While this is redundant and could be done by `Tailwind` alone, we still want to set this for the whole document because it helps preventing edge cases, where e.g. opening a Popper/Menu leads to a vertical scrollbar appearing, because it is too wide for a small screen and then fully scolling this popper into the view leads to the original browser-default background color appear outside of where your `Tailwind` component defining the background has its boundaries.
 
 Also, explicitly disabling or overriding focus styling globally might be a good idea because the browser-defaults don't relaly look good:
 ```css
@@ -117,12 +130,15 @@ Also, explicitly disabling or overriding focus styling globally might be a good 
 ``` 
 
 ### Fonts are loaded from remote CDN at build time
-Currently the fonts are loaded from https://fonts.google.com/ at build time.
+The fonts are loaded from https://fonts.google.com/ at build time.
 
 ## App Router - Pitfalls
 
-### The initially loaded page in the browser is handled dfferently by/in the client side cache of Next.js compared to all subsequent pages
-The initially loaded page (that is accessed via a hard reload in the browser) is handled differently by the client side cache of Next.js than the pages that are subsequently accessed via soft transitions. This affects prefetching via Next.js Links. The data for the initially loaded page is fetched again as soon as a corresponding Link component to that page becomes visible and prefetches it. This becomes noticable e.g. if a page is hard reloaded and has a Link to itself. Then the function/endpoint where the data is fetched by that page is called twice.
+### The initially loaded page in the browser is handled dfferently by/in the client-side cache of Next.js compared to all subsequent pages
+The initially loaded page (that is accessed via a hard reload in the browser) is handled differently by the client-side cache of Next.js than the pages that are subsequently accessed via soft transitions. This affects prefetching via Next.js Links. The data for the initially loaded page is fetched again as soon as a corresponding Link component to that page becomes visible and prefetches it. This becomes noticable e.g. if a page is hard reloaded and has a Link to itself. Then the function/endpoint where the data is fetched by that page is called twice.
+
+### Interference between `error.tsx` and `not-found.tsx`
+In this app only one `not-found.tsx` and one `error.tsx`, which are on the same level as the Root Layout, are used. Currently, using e.g. an `error.tsx` deep inside the folder structure and a `not-found.tsx` further outside in the folder structure leads to `notFound()` called in that deep folder being caught by the `error.tsx`, thus wrongly displaying the `error.tsx` Component instead of the `not-found.tsx` Component.
 
 ## App Router - Problems
 
@@ -179,17 +195,17 @@ This only occurs with `next dev`.
 
 This seems to have been fixed within one of the `13.4.13-canary` versions.
 
-## App Router - Feature Tracking
+## App Router - Features
 
 ### Extend Session Cookies `maxAge`
-Currently there is a hard session timeout when only relying on React Server Components for authentication. We should periodically check for changes in Next.js and NextAuth.js. Writing Cookies in this new architecture would be a nice way of rotating the session cookie/timeout when the user is active and thus preventing a hard session timeout.
+Currently, there is a hard session timeout when only relying on React Server Components for authentication. We should periodically check for changes in Next.js and NextAuth.js. Writing Cookies in this new architecture would be a nice way of rotating the session cookie/timeout when the user is active and thus preventing a hard session timeout.
 
 https://next-auth.js.org/configuration/nextjs#in-app-directory
 
-### Typed Routes (beta)
+### Typed Routes
 https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links
 
-### Server Actions (alpha)
+### Server Actions
 https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions
 
 #### Explore Server Actions
@@ -198,20 +214,21 @@ https://nextjs.org/docs/app/building-your-application/data-fetching/server-actio
 * Throw an error or call `notFound()` or `redirect()` inside Server Actions to check how this integrates with the router.
 * Trigger a redirect (e.g. to the Login page on a session timeout) and see if/how that works.
 * Explore how revalidation/refreshing of data on the UI from a Server Action works in general.
-* How does client side form validation work?
+* How does client-side form validation work?
 * In any case parse the FormData via `zod` on the server.
 * Should inputs be controlled or not?
-* Can I compose Client-side actions (e.g. functions that do state updates) with Server Actions and then pass them as `action` prop to a form?
+* Can I compose Client Actions (e.g. functions that do state updates) with Server Actions and then pass them as `action` prop to a form?
 
 #### Server Actions - Test Scenarios
 * Check that there is no stale data after mutations that call `redirect()`.
 * Check that there is no stale data after mutations that call `revalidatePath()`, especially in layouts and after navigation.
 * Check that `redirect()` (also to the Login page) and throwing Errors (more precisely showing an Error Boundary for thrown errors) work when used in Server Actions.
+* Check in the browser's network tab that when using `revalidatePath()` mutating data and updating the UI are done in the same request.
 
 **Pitfall:** It seems that, while usage of `notFound()` technically works, the Next.js team is not sure whether this should be allowed in Server Actions:
 https://github.com/vercel/next.js/pull/53373
 
-#### Server Action - State Report `13.4.13-canary.8`
+#### Server Actions - State Report `13.4.13-canary.8`
 The Next.js version `13.4.13-canary.8` had some very noticable positive effects on how well Server Actions work. Several issues regarding the application of `revalidatePath()` and `redirect()` have been fixed.
 
 The following behaviour is true for Next.js `13.4.13-canary.8`:
@@ -220,10 +237,15 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * A Server Action used that way can trigger a `redirect()`.
 * A Server action used that way can refresh the UI via `revalidatePath()`.
 * A Server action used that way can throw an error that leads to the cooresponding `error.tsx` component being shown.
-* A Server action is allowed to `redirect` to the exact same page (url) it was called from. This allows to reflect Server-side validation errors in the search params. On validation error we do a redirect to the same page with the errors as search params. On success we do a redirect to the same page without any search params, thus ensuring that the error messages that were shown based on the search params are gone. If no search params were present before successfully mutating data via that form, a redirect to the exact same url happens, but that shouldn't be a problem.
-* A `redirect` in a Server Action replaces the current history entry in the Browser's History API.
+* A Server action is allowed to `redirect` to the exact same page (url) it was called from.
+* A `redirect` in a Server Action replaces the current history entry in the browser's History API.
+* **Pitfall:** Currently, url changes made in a middleware (e.g. Internationalization Middleware) seem to not be applied for redirects (via `redirect`) in Server Actions. E.g. if a Server Action would trigger a redirect to `/login` and a middleware would prefix urls with the current lang (e.g. `/en/login`) the url displayed in the browser would still be `/login` altough the correct page for the `/[lang]/login` route is shown in the browser. Ensuring that redirects in Server Actions already have the current locale is a good idea anyways. For now, Internationalization Middleware should only be applied for the base path `/` to not interfer whith Server Actions and to enforce the programmer to always include the current language in redirects.
 
-**Pitfall:** Currently url changes made in a middleware (e.g. Internationalization Middleware) seem to not be applied for redirects (via `redirect`) in Server Actions. E.g. if a Server Action would trigger a redirect to `/login` and a middleware would prefix urls with the current lang (e.g. `/en/login`) the url displayed in the browser would still be `/login` altough the correct page for the `/[lang]/login` route is shown in the browser. Ensuring that redirects in Server Actions already have the current locale is a good idea anyways. For now, Internationalization Middleware should only be applied for the base path `/` to not interfer whith Server Actions and to enforce the programmer to always include the current language in redirects.
+#### Server Actions - State Report `13.4.19`
+* **Pitfall:** Using `redirect` in a Server Action that is wrapped by a Client Action leads to `undefined` being returned by the Server Action which is not reflected in the return type that is infered by Typescript.
+
+#### Server Actions - State Report `13.4.20-canary.4`
+* A `redirect` in a Server Action pushes to the browser's History API.
 
 ## App Router - Pull Requests
 * Upgrade vendored React: https://github.com/vercel/next.js/pull/51779
@@ -232,6 +254,7 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * router: apply server actions in a similar way to router.refresh(): https://github.com/vercel/next.js/pull/53373
 * Consolidate Server and Routing process into one process: https://github.com/vercel/next.js/pull/53523
 * Forms and mutations docs.: https://github.com/vercel/next.js/pull/54314
+* Use push for Server Action redirections: https://github.com/vercel/next.js/pull/54458
 
 ## App Router - Issues
 * [NEXT-1189] metadata not updated on navigation with experimental.serverActions set to true: https://github.com/vercel/next.js/issues/49409
@@ -241,8 +264,10 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * Custom process.env variables not available in docker standalone output: https://github.com/vercel/next.js/issues/53367
 * [Routing] Using redirect from server action always uses "replace" redirect type: https://github.com/vercel/next.js/issues/53911
 * Docs: Server Actions - clarify "... compose additional behaviour with Client Actions" and add an Example for it: https://github.com/vercel/next.js/issues/53929
+* nextjs 13.4.13+ broke self-hosted docker setup: https://github.com/vercel/next.js/issues/54133
 
 ## App Router - Discussions
+* Error handling for Server Actions: https://github.com/vercel/next.js/discussions/49426
 * Deep Dive: Caching and Revalidating: https://github.com/vercel/next.js/discussions/54075
 
 ## Tooling
