@@ -88,8 +88,7 @@ For auth we consider two things:
 Both can rely on the `@/lib/auth/getUser.tsx` function that does a `redirect()` to the login page if the user is not authenticated.
 
 #### React Server Components
-React Server Components form the most central part of handling authentication and adjusting the UI accordingly For instance, they can show the Login page by using `redirect(navigation.login)` when no user is present or the session has timed out. Having this component oriented way of doing Login page redirection helps to avoid edge cases compared to using middleware. 
-This is because middleware and RSCs live in two different worlds and an edge case might occur when the session times out between being checked in middleware and later again being checked in an RSC. Therefore, RSCs are conceptually the single source of truth regarding auth state, since they have to adjust the UI accrodingly anyway. Moreover, by using this component oriented way of handling auth, we can handle Login redirects whenever we do not have a user at component level, making our app stable for restructuring.
+React Server Components form the most central part of handling authentication and adjusting the UI accordingly For instance, they can show the Login page by using `redirect(navigation.login)` when no user is present or the session has timed out. Having this component oriented way of doing Login page redirection helps to avoid edge cases compared to using middleware. This is because middleware and RSCs live in two different worlds and an edge case might occur when the session times out between being checked in middleware and later again being checked in an RSC. Therefore, RSCs are conceptually the single source of truth regarding auth state, since they have to adjust the UI accrodingly anyway. Moreover, by using this component oriented way of handling auth, we can handle Login redirects whenever we do not have a user at component level, making our app stable for restructuring.
 
 #### Server Actions
 Server Actions can trigger redirects, which is a nice way of handling e.g. a session timeout on requests that do mutations.
@@ -249,6 +248,7 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 
 #### Server Actions - State Report `13.4.19`
 * **Pitfall:** Using `redirect` in a Server Action that is wrapped by a Client Action leads to `undefined` being returned by the Server Action which is not reflected in the return type that is infered by Typescript.
+* **Pitfall:** Assume we pass a Client Action as `action` prop to a form and from within that Client Action a Server Action that calls `revalidatePath` is called. Moreover, assume that after completion of the Server Action you want to adjust state via the Client Action. In such a scenario, updating the state via a Client Action after executing the Server Action must not lead to the form being removed from the screen. Otherwise, the state update seems to be executed before the data is revalidated. E.g. if you close a Modal containing a form after the Server Action is completed, unintuitively, the Modal will be closed before the data is revalidated, leading to a bad UX. The Modal is closed early while stale data is on the Screen without loading feedback. Then, as soon as revalidation is completed the new data appears. This currently limits the ability to close Modal/Dialog components after successful form submission.
 
 #### Server Actions - State Report `13.4.20-canary.4`
 * A `redirect` in a Server Action pushes to the browser's History API.
@@ -271,6 +271,7 @@ The following behaviour is true for Next.js `13.4.13-canary.8`:
 * [Routing] Using redirect from server action always uses "replace" redirect type: https://github.com/vercel/next.js/issues/53911
 * Docs: Server Actions - clarify "... compose additional behaviour with Client Actions" and add an Example for it: https://github.com/vercel/next.js/issues/53929
 * nextjs 13.4.13+ broke self-hosted docker setup: https://github.com/vercel/next.js/issues/54133
+* Form are being submitted twice in nextjs canary: https://github.com/vercel/next.js/issues/54746
 
 ## App Router - Discussions
 * Error handling for Server Actions: https://github.com/vercel/next.js/discussions/49426
