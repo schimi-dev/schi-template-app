@@ -211,47 +211,22 @@ https://next-auth.js.org/configuration/nextjs#in-app-directory
 https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links
 
 ### Server Actions
-https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions
+https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations
 
-#### Explore Server Actions
-* How does Authentication work with Server Actions?
-* How can I access the current User within Server Actions?
-* Throw an error or call `notFound()` or `redirect()` inside Server Actions to check how this integrates with the router.
-* Trigger a redirect (e.g. to the Login page on a session timeout) and see if/how that works.
-* Explore how revalidation/refreshing of data on the UI from a Server Action works in general.
-* How does client-side form validation work?
-* In any case parse the FormData via `zod` on the server.
-* Should inputs be controlled or not?
-* Can I compose Client Actions (e.g. functions that do state updates) with Server Actions and then pass them as `action` prop to a form?
-
-#### Server Actions - Test Scenarios
+#### Test Scenarios
 * Check that there is no stale data after mutations that call `redirect()`.
 * Check that there is no stale data after mutations that call `revalidatePath()`, especially in layouts and after navigation.
-* Check that `redirect()` (also to the Login page) and throwing Errors (more precisely showing an Error Boundary for thrown errors) work when used in Server Actions.
-* Check in the browser's network tab that when using `revalidatePath()` mutating data and updating the UI are done in the same request.
+* Check that `redirect()` (e.g. to the Login page on a Session Timeout) works when used in a Server Action.
+* Check that throwing Errors inside Server Actions leads to showing the `error.tsx` Component.
+* Check in the browser's network tab that, when using `revalidatePath()`, mutating data and updating the UI are done in the same request.
+* Check that redirects triggered from Server Actions within the same layout do not lead to any state loss in that layout.
 
-**Pitfall:** It seems that, while usage of `notFound()` technically works, the Next.js team is not sure whether this should be allowed in Server Actions:
-https://github.com/vercel/next.js/pull/53373
-
-#### Server Actions - State Report `13.4.13-canary.8`
-The Next.js version `13.4.13-canary.8` had some very noticable positive effects on how well Server Actions work. Several issues regarding the application of `revalidatePath()` and `redirect()` have been fixed.
-
-The following behaviour is true for Next.js `13.4.13-canary.8`:
-* Redirects triggered from Server Actions within a page do not lead to any state loss in any layout wrapping that page.
-* Server Actions can be wrapped by Client Actions and these Client Actions can be passed to forms via the `action` prop. That way we can use controlled inputs inside forms and build Server Actions with type-save signatures.
-* A Server Action used that way can trigger a `redirect()`.
-* A Server action used that way can refresh the UI via `revalidatePath()`.
-* A Server action used that way can throw an error that leads to the cooresponding `error.tsx` component being shown.
-* A Server action is allowed to `redirect` to the exact same page (url) it was called from.
-* A `redirect` in a Server Action replaces the current history entry in the browser's History API.
-* **Pitfall:** Currently, url changes made in a middleware (e.g. Internationalization Middleware) seem to not be applied for redirects (via `redirect`) in Server Actions. E.g. if a Server Action would trigger a redirect to `/login` and a middleware would prefix urls with the current lang (e.g. `/en/login`) the url displayed in the browser would still be `/login` altough the correct page for the `/[lang]/login` route is shown in the browser. Ensuring that redirects in Server Actions already have the current locale is a good idea anyways. For now, Internationalization Middleware should only be applied for the base path `/` to not interfer whith Server Actions and to enforce the programmer to always include the current language in redirects.
-
-#### Server Actions - State Report `13.4.19`
-* **Pitfall:** Using `redirect` in a Server Action that is wrapped by a Client Action leads to `undefined` being returned by the Server Action which is not reflected in the return type that is infered by Typescript.
-* **Pitfall:** Assume we pass a Client Action as `action` prop to a form and from within that Client Action a Server Action that calls `revalidatePath` is called. Moreover, assume that after completion of the Server Action you want to adjust state via the Client Action. In such a scenario, updating the state via a Client Action after executing the Server Action must not lead to the form being removed from the screen. Otherwise, the state update seems to be executed before the data is revalidated. E.g. if you close a Modal containing a form after the Server Action is completed, unintuitively, the Modal will be closed before the data is revalidated, leading to a bad UX. The Modal is closed early while stale data is on the Screen without loading feedback. Then, as soon as revalidation is completed the new data appears. This currently limits the ability to close Modal/Dialog components after successful form submission.
-
-#### Server Actions - State Report `13.4.20-canary.4`
-* A `redirect` in a Server Action pushes to the browser's History API.
+#### Pitfalls
+* It seems that, while usage of `notFound()` technically works, the Next.js team is not sure whether this should be allowed in Server Actions: https://github.com/vercel/next.js/pull/53373
+* When a Server Action is wrapped by a Client Action and that Client Action is passed as an `action` prop to a form, that Client Action must not catch errors from the Server Action, otherwise using `redirect` or showing the `error.tsx` in case of an error does not work.
+* Currently, url changes made in a middleware (e.g. Internationalization Middleware) seem to not be applied for redirects (via `redirect`) in Server Actions. E.g. if a Server Action would trigger a redirect to `/login` and a middleware would prefix urls with the current lang (e.g. `/en/login`) the url displayed in the browser would still be `/login` altough the correct page for the `/[lang]/login` route is shown in the browser. Ensuring that redirects in Server Actions already have the current locale is a good idea anyways. For now, Internationalization Middleware should only be applied for the base path `/` to not interfer whith Server Actions and to enforce the programmer to always include the current language in redirects.
+* Using `redirect` in a Server Action that is wrapped by a Client Action leads to `undefined` being returned by the Server Action which is not reflected in the return type that is infered by Typescript.
+* Assume we pass a Client Action as `action` prop to a form and from within that Client Action a Server Action that calls `revalidatePath` is called. Moreover, assume that after completion of the Server Action you want to adjust state via the Client Action. In such a scenario, updating the state via a Client Action after executing the Server Action must not lead to the form being removed from the screen. Otherwise, the state update seems to be executed before the data is revalidated. E.g. if you close a Modal containing a form after the Server Action is completed, unintuitively, the Modal will be closed before the data is revalidated, leading to a bad UX. The Modal is closed early while stale data is on the Screen without loading feedback. Then, as soon as revalidation is completed the new data appears. This currently limits the ability to close Modal/Dialog components after successful form submission.
 
 ## App Router - Pull Requests
 * Upgrade vendored React: https://github.com/vercel/next.js/pull/51779
