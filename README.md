@@ -147,30 +147,24 @@ In this app only one `not-found.tsx` and one `error.tsx`, which are on the same 
 
 ## App Router - Problems
 
-### Stale data with `revalidatePath()`
-After navigating away from a route that called `revalidatePath()`, the new page might have stale data. The route that called `revalidatePath()` is refreshed fine. This seems to have been fixed in in Next.js `13.4.5`. However, it seems to occur again with `13.4.11-canary.1`. In `13.4.13-canary.8` it was fixed again.
+### Stale Metadata with Server Actions - FIXED
+Currently, the page title set by `generateMetadata()` and `metadata` are stale. This seems to be related to enableing Server Actions in `next.config.js`. 
 
-### Strange bug probably related to focusing an `input` of a `form` too early after a page is loaded/mounted
+This has been fixed in `13.4.9`.
 
-When an input inside a form is focused while the browser is still loading/hydrating and that form is then submitted (via fetch and `e.preventDefault()`), `router.refresh()` is not executed/completed until further interaction with that page/input is done. If `router.refresh()` is called inside of a transition, all state updates inside that transition are not executed/completed until further interaction with that page/input is done. Thus, the transition has `isPending` being true. There are different UI actions that might lead to the state changes suddenly being applied like clicking on the page/input or hovering a Link component from `next/link`. However, this could not be reproduced consistently accross different applications and scenarios of how Links, Layouts and Pages are structured.
+### Stale data with `revalidatePath()` -FIXED
+After navigating away from a route that called `revalidatePath()`, the new page might have stale data. The route that called `revalidatePath()` is refreshed fine. 
 
-Similarly, when an input inside a form is focused while the page is still loading/hydrating, using Server Actions inside React Server Components to submit that form might not update the page when `revalidatePath()` is called in that Server Action. When hovering a Link (`next/link`) the UI state gets finally updated. When that problem occurrs, the `useFormStatus()` sometimes has `pending` remaining `true` after form submission, but most of the times `pending` of `useFormStatus()` becomes `false` again after the form submission. Regardless, in both cases the data is stale until hovering a Link (`next/link`).
+This seems to have been fixed in in Next.js `13.4.5`. However, it seems to occur again with `13.4.11-canary.1`. In `13.4.13-canary.8` it was fixed again.
 
-These two problems behave similarly, and are reproducible especially with focusing an input immediately after a hard reload in the browser. However, it is hard to consistently reproduce them and thus to detect every scenario where this might occurr.
-
-### Stale Metadata with Server Actions
-Currently, the page title set by `generateMetadata()` and `metadata` are stale. This seems to be related to enableing Server Actions in `next.config.js`. This has been fixed in `13.4.9`.
-
-### Using `redirect()` after `revalidatePath()` in a Server Action leads to stale data in layout
+### Using `redirect()` after `revalidatePath()` in a Server Action leads to stale data in layout - FIXED
 When using `redirect()` after `revalidatePath()` the data in layouts that stay mounted becomes stale. 
 
-There is a corresponding issue that tracks this problem:
-
-https://github.com/vercel/next.js/issues/52075
+There is a corresponding issue that tracks this problem: https://github.com/vercel/next.js/issues/52075
 
 This was fixed by `13.4.13-canary.8`.
 
-### Server Action - `redirect()` error log
+### Server Action - `redirect()` error log - FIXED
 Using `redirect()` in a server action logs the following message to the console on the server:
 ```
 failed to get redirect response TypeError: fetch failed
@@ -188,10 +182,7 @@ However, according to how the UI is updated the redirect seems to work correctly
 
 This seems to have been fixed within one of the `13.4.13-canary` versions.
 
-### Errors in `generateMetadata()` do not seem to be caught by `error.tsx`
-It seems that `error.tsx` is not able to catch errors thrown inside `generateMetadata()`. This can be tested e.g. when an invalid MongoDB ObjectId is present as path param of a route that fetches data for that ObjectId in its `generateMetadata()` function.
-
-### Browser console `id` mismatch warning with `next dev`
+### Browser console `id` mismatch warning with `next dev` - FIXED
 When rendering certain components like e.g. the `@headlessui/react` Dialog on the server a warning is present in the browser console:
 ```
 app-index.js:31 Warning: Prop `id` did not match. Server: "headlessui-menu-button-:Rplmcq:" Client: "headlessui-menu-button-:R36mpj9:"
@@ -199,6 +190,17 @@ app-index.js:31 Warning: Prop `id` did not match. Server: "headlessui-menu-butto
 This only occurs with `next dev`. 
 
 This seems to have been fixed within one of the `13.4.13-canary` versions.
+
+### Errors in `generateMetadata()` do not seem to be caught by `error.tsx`
+It seems that `error.tsx` is not able to catch errors thrown inside `generateMetadata()`. This can be tested e.g. when an invalid MongoDB ObjectId is present as path param of a route that fetches data for that ObjectId in its `generateMetadata()` function.
+
+### Strange bug probably related to focusing an `input` of a `form` too early after a page is loaded/mounted
+
+When an input inside a form is focused while the browser is still loading/hydrating and that form is then submitted (via fetch and `e.preventDefault()`), `router.refresh()` is not executed/completed until further interaction with that page/input is done. If `router.refresh()` is called inside of a transition, all state updates inside that transition are not executed/completed until further interaction with that page/input is done. Thus, the transition has `isPending` being true. There are different UI actions that might lead to the state changes suddenly being applied like clicking on the page/input or hovering a Link component from `next/link`. However, this could not be reproduced consistently accross different applications and scenarios of how Links, Layouts and Pages are structured.
+
+Similarly, when an input inside a form is focused while the page is still loading/hydrating, using Server Actions inside React Server Components to submit that form might not update the page when `revalidatePath()` is called in that Server Action. When hovering a Link (`next/link`) the UI state gets finally updated. When that problem occurrs, the `useFormStatus()` sometimes has `pending` remaining `true` after form submission, but most of the times `pending` of `useFormStatus()` becomes `false` again after the form submission. Regardless, in both cases the data is stale until hovering a Link (`next/link`).
+
+These two problems behave similarly, and are reproducible especially with focusing an input immediately after a hard reload in the browser. However, it is hard to consistently reproduce them and thus to detect every scenario where this might occurr.
 
 ## App Router - Features
 
