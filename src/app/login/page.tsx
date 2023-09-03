@@ -9,11 +9,10 @@ export const metadata = {
 
 export default async function Page({ searchParams }: { searchParams: { error?: string } }) {
 
-    const providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | undefined = await fetch(`${process.env.NEXTAUTH_URL_INTERNAL}/api/auth/providers`, { cache: 'no-store' })
-        .then(res => res.json());
-
-    if (!providers)
-        throw new Error("Failed to fetch providers");
+    const providers = await fetch(
+        `${process.env.NEXTAUTH_URL_INTERNAL}/api/auth/providers`, {
+        cache: 'no-store'
+    }).then(res => res.json()) as Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>;
 
     const error = searchParams.error ?? null;
 

@@ -238,6 +238,7 @@ https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mu
 * Consolidate Server and Routing process into one process: https://github.com/vercel/next.js/pull/53523
 * Forms and mutations docs.: https://github.com/vercel/next.js/pull/54314
 * Use push for Server Action redirections: https://github.com/vercel/next.js/pull/54458
+* Fix next-server not working properly when HOSTNAME is defined: https://github.com/vercel/next.js/pull/54926
 
 ## App Router - Issues
 * [NEXT-1189] metadata not updated on navigation with experimental.serverActions set to true: https://github.com/vercel/next.js/issues/49409

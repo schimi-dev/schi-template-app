@@ -22,7 +22,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
                         Logged in as:
                     </p>
                     <p className="text-sm font-medium">
-                        {user.name || user.email}
+                        {user.name ?? user.email}
                     </p>
                 </div>
                 <BackLink href={backUrl} >
