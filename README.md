@@ -85,7 +85,7 @@ For auth we consider two things:
 * React Server Components for fetching data
 * Server Actions for mutating data
 
-Both can rely on the `@/lib/auth/getUser.tsx` function that does a `redirect()` to the login page if the user is not authenticated.
+Both can rely on the `@/lib/auth/getUser.ts` function that does a `redirect()` to the login page if the user is not authenticated.
 
 #### React Server Components
 React Server Components form the most central part of handling authentication and adjusting the UI accordingly For instance, they can show the Login page by using `redirect(navigation.login)` when no user is present or the session has timed out. Having this component oriented way of doing Login page redirection helps to avoid edge cases compared to using middleware. This is because middleware and RSCs live in two different worlds and an edge case might occur when the session times out between being checked in middleware and later again being checked in an RSC. Therefore, RSCs are conceptually the single source of truth regarding auth state, since they have to adjust the UI accrodingly anyway. Moreover, by using this component oriented way of handling auth, we can handle Login redirects whenever we do not have a user at component level, making our app stable for restructuring.
