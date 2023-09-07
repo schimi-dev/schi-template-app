@@ -299,4 +299,4 @@ https://generate-secret.vercel.app/32
 
 ## TODO
 * Tailwind should be configured via a Typescript config file within one of the next versions of `create-next-app`.
-* Improve the styling of the cards for creating a new project and for displaying an existing project on `/dashboard` page.
+* Improve the styling of the cards for creating a new project and for displaying an existing project on `/dashboard` page. (E.g. Azure DevOps style with avatar and header top left, description below and icons for urls to the different detail pages on the bottom right)
