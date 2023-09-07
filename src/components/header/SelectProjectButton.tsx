@@ -65,10 +65,10 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                     "w-full flex items-center px-4 py-2 gap-3 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
                                     "w-full flex items-center px-4 py-2 gap-3 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                 }
-                                onClick={() => push(`${navigation.newProject}?backUrl=${encodeURIComponent(pathname)}`)}
+                                onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}
                             >
                                 <MdAddCircleOutline className="h-5 w-5 text-primary-500 dark:text-primary-400" />
-                                Create a new project
+                                Create project
                             </button>
                         )}
                     </Menu.Item>

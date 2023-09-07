@@ -49,7 +49,9 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
                 />
             </div>
             <div>
-                <Submit>Update</Submit>
+                <Submit>
+                    Update
+                </Submit>
             </div>
         </form>
     )
