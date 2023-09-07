@@ -68,7 +68,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                 onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}
                             >
                                 <MdAddCircleOutline className="h-5 w-5 text-primary-500 dark:text-primary-400" />
-                                Create project
+                                Create a new project
                             </button>
                         )}
                     </Menu.Item>

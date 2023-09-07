@@ -27,7 +27,7 @@ export default async function Page() {
                         >
                             <MdAddCircleOutline className="h-6 w-6 text-primary-500 dark:text-primary-400" />
                             <span className="text-xs text-secondary-500 dark:text-secondary-400">
-                                {"Create project"}
+                                {"Create a new project"}
                             </span>
                         </Link>
                     </li>

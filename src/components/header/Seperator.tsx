@@ -3,6 +3,7 @@
 import useProjectId from "@/hooks/useProjectId";
 
 export default function Seperator() {
+    
     const projectId = useProjectId();
 
     // Returning `null` is a suitable approach because functionality that is only available in Client Components is needed to detect if this component should be rendered.
