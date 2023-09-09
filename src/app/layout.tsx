@@ -8,7 +8,7 @@ import getTheme from '@/lib/utils/getTheme'
 const inter = Inter({ subsets: ['latin'], fallback: ['Arial', 'sans-serif'] })
 
 export const metadata: Metadata = {
-    title: process.env.NEXT_PUBLIC_TITLE,
+    title: process.env.NEXT_PUBLIC_NAME,
 }
 
 export default function RootLayout({

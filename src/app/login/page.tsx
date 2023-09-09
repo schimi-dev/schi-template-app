@@ -19,7 +19,7 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
             <main className="max-w-sm w-full p-4 relative">
-                <h1 className="text-2xl text-center font-semibold mb-8">{`Log in to ${process.env.NEXT_PUBLIC_TITLE}`}</h1>
+                <h1 className="text-2xl text-center font-semibold mb-8">{`Log in to ${process.env.NEXT_PUBLIC_NAME}`}</h1>
                 <div className="flex flex-col space-y-4">
                     {Object.values(providers)
                         .filter(provider => provider.type === "oauth")

@@ -11,7 +11,7 @@ This document contains information about the setup and design decisions. Moreove
 
 The following environment variables are version managed and can be found in the `.env` file of this project.
 
-`NEXT_PUBLIC_TITLE=`
+`NEXT_PUBLIC_NAME=`
 
 ### Non-Version Managed
 
@@ -126,13 +126,6 @@ We customize forms and inputs to prevent potentially annoying browser behaviour:
 We need to apply the correct color-scheme when allowing the user to manually toggle dark and light theme. Thus, we set `color-scheme: dark;` and `color-scheme: light;` in the corresponding classes in `globals.css`.
 
 Moreover, we set the background color for the body also in `globals.css`. While this is redundant and could be done by `Tailwind` alone, we still want to set this for the whole document because it helps preventing edge cases, where e.g. opening a Popper/Menu leads to a vertical scrollbar appearing, because it is too wide for a small screen and then fully scolling this popper into the view leads to the original browser-default background color appear outside of where your `Tailwind` component defining the background has its boundaries.
-
-Also, explicitly disabling or overriding focus styling globally might be a good idea because the browser-defaults don't relaly look good:
-```css
-*:focus {
-    outline: none;
-}
-``` 
 
 ### Fonts are loaded from remote CDN at build time
 The fonts are loaded from https://fonts.google.com/ at build time.
