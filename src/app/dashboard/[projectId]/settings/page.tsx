@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { projectId: string } }
                 <h1 className="text-2xl font-medium">
                     Project
                 </h1>
-                <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                <p className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
                     Manage your project settings
                 </p>
             </div>

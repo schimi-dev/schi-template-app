@@ -15,8 +15,8 @@ export default function NavLink<T extends string>({ href, children }: { href: Ro
         <Link
             href={href}
             className={active ?
-                "text-sm flex items-center gap-3 px-5 py-2 font-medium bg-secondary-100 dark:bg-secondary-800" :
-                "text-sm flex items-center gap-3 px-5 py-2 font-normal hover:bg-secondary-100 dark:hover:bg-secondary-800  text-secondary-700 dark:text-secondary-300"
+                "text-sm flex items-center gap-3 px-5 py-2 focus:outline-none focus:border-r-2 focus:border-primary-500 dark:focus:border-primary-400 focus:bg-secondary-100 dark:focus:bg-secondary-800 font-medium bg-secondary-100 dark:bg-secondary-800" :
+                "text-sm flex items-center gap-3 px-5 py-2 focus:outline-none focus:border-r-2 focus:border-primary-500 dark:focus:border-primary-400 focus:bg-secondary-100 dark:focus:bg-secondary-800 font-normal hover:bg-secondary-100 dark:hover:bg-secondary-800  text-secondary-700 dark:text-secondary-300"
             }
         >
             {children}

@@ -22,7 +22,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
 
     return (
         <Menu as="div" className="relative">
-            <Menu.Button className="h-10 w-7 rounded-md focus:bg-secondary-100 hover:bg-secondary-100 dark:focus:bg-secondary-800 dark:hover:bg-secondary-800 flex items-center justify-center">
+            <Menu.Button className="h-10 w-7 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 flex items-center justify-center">
                 <MdUnfoldMore className="h-5 w-5" />
             </Menu.Button>
             <Menu.Items className="top-11 left-3.5 -translate-x-1/2 absolute z-10 rounded-md overflow-hidden shadow border border-secondary-200 bg-white dark:border-secondary-700 dark:bg-secondary-800">

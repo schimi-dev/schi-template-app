@@ -122,6 +122,9 @@ We customize forms and inputs to prevent potentially annoying browser behaviour:
 * Set `spellCheck={false}` on forms and inputs
 * Set `autoComplete='off'` on forms and inputs
 
+### Accessibility
+The app should support usage via tabbing. We make sure that all focusable elements are highlighted when focused and special elements like Menus and Dialogs fulfill accessibility guidelines (e.g. focusing the first focusable element when opened).
+
 ### CSS
 We need to apply the correct color-scheme when allowing the user to manually toggle dark and light theme. Thus, we set `color-scheme: dark;` and `color-scheme: light;` in the corresponding classes in `globals.css`.
 
