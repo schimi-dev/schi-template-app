@@ -12,7 +12,7 @@ const config: Config = {
     theme: {
         colors: {
             primary: colors.indigo,
-            secondary: colors.zinc,
+            secondary: colors.neutral,
             error: colors.red,
             success: colors.green,
             warning: colors.yellow,
