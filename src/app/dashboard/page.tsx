@@ -28,7 +28,7 @@ export default async function Page() {
                         >
                             <div className="flex items-center gap-3">
                                 <MdAddCircleOutline className="h-6 w-6 text-primary-500 dark:text-primary-400" />
-                                <span className="text-lg font-medium">
+                                <span className="text-base font-medium">
                                     {"New Project"}
                                 </span>
                             </div>
@@ -42,7 +42,7 @@ export default async function Page() {
                             >
                                 <div className="flex items-center gap-3">
                                     <ProjectAvatar project={project} />
-                                    <span className="text-lg font-medium">
+                                    <span className="text-base font-medium">
                                         {project.name}
                                     </span>
                                 </div>
