@@ -4,6 +4,14 @@ import { cache } from "react";
 import { ProjectSchema, TProjectSettings } from "@/types/project";
 import clientPromise from "./clientPromise";
 
+const getProjectCollection = async () => await clientPromise.then(client => client.db().collection("project"));
+
+const toProject = (projectDocument: WithId<Document>) => {
+    const { _id, ...rest } = projectDocument;
+    const project = ProjectSchema.parse({ id: _id.toString(), ...rest });
+    return project;
+}
+
 export const findProjects = cache(async (userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
     let sortObj: Sort = {
@@ -39,7 +47,6 @@ export const findProject = cache(async (id: string, userAccountId: string, userA
     return toProject(_project);
 });
 
-
 export const createProject = async (data: TProjectSettings, userAccountId: string, userAccountProvider: string) => {
     const _projectCollection = await getProjectCollection();
     const now = new Date();
@@ -67,10 +74,8 @@ export const updateProject = async (id: string, data: TProjectSettings, userAcco
     };
     const _project = await _projectCollection.findOneAndUpdate(projectQuery, patchOp, { returnDocument: "after" });
     if (!_project) {
-        console.error(`Could not find and update project with id ${id}`);
-        return null;
+        console.error(`Failed to update project with id ${id}`);
     }
-    return toProject(_project);
 };
 
 export const deleteProject = async (id: string, userAccountId: string, userAccountProvider: string) => {
@@ -84,11 +89,3 @@ export const deleteProject = async (id: string, userAccountId: string, userAccou
     const _projectCollection = await getProjectCollection();
     await _projectCollection.deleteOne(projectQuery);
 };
-
-const toProject = (projectDocument: WithId<Document>) => {
-    const { _id, ...rest } = projectDocument;
-    const project = ProjectSchema.parse({ id: _id.toString(), ...rest });
-    return project;
-}
-
-const getProjectCollection = async () => await clientPromise.then(client => client.db().collection("project"));

@@ -16,7 +16,7 @@ export default function Seperator() {
         return null;
 
     return (
-        <span className="text-secondary-300 dark:text-secondary-700 flex items-center justify-center text-4xl font-thin" >
+        <span className="text-secondary-300 dark:text-secondary-700 flex items-center justify-center text-3xl font-thin" >
             /
         </span>
     )

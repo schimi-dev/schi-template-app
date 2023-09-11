@@ -13,9 +13,7 @@ export default function UpdateProjetForm({ project }: { project: TProject }) {
         'use server'
         const user = await getUser();
         const data = ProjectSettingsSchema.parse(Object.fromEntries(formData));
-        const result = await updateProject(project.id, data, user.id, user.provider);
-        if (!result)
-            throw new Error(`Failed to update project with id ${project.id}`);
+        await updateProject(project.id, data, user.id, user.provider);
         revalidatePath("/");
     }
 

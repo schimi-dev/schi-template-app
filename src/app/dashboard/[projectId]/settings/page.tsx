@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { projectId: string } }
                 <h1 className="text-2xl font-medium">
                     Project
                 </h1>
-                <p className="text-sm font-medium text-secondary-500">
+                <p className="text-sm text-secondary-600 dark:text-secondary-400">
                     Manage your project settings
                 </p>
             </div>
@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: { projectId: string } }
                     Delete project
                 </h2>
                 <div className="flex flex-col gap-6">
-                    <p className="text-sm text-secondary-500">
+                    <p className="text-sm text-secondary-600 dark:text-secondary-400">
                         {"If you want to permanentrly delete this project and all of its related data, you can do so below."}
                     </p>
                     <div>

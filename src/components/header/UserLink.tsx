@@ -1,4 +1,4 @@
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import BreadcrumbLink from "./BreadcrumbLink";
 import navigation from "@/navigation";
 import UserAvatar from "./UserAvatar";

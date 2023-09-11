@@ -1,4 +1,4 @@
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import Image from "next/image";
 
 export default function UserAvatar({ user }: { user: NonNullable<Session["user"]> }) {

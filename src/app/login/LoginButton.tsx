@@ -1,6 +1,6 @@
 'use client'
 
-import { ClientSafeProvider, signIn } from "next-auth/react";
+import { type ClientSafeProvider, signIn } from "next-auth/react";
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import navigation from "@/navigation";

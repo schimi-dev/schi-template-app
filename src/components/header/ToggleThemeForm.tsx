@@ -11,7 +11,7 @@ export default function ToggleThemeForm() {
             name: "theme",
             value: theme === "light" ? "dark" : "light",
             httpOnly: true,
-            maxAge: 60 * 60 * 24 * 1000,
+            maxAge: 60 * 60 * 24 * 1000, // 1000 days
             path: '/'
         })
     }

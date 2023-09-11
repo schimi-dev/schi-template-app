@@ -1,6 +1,6 @@
 import React from "react";
-import { ClientSafeProvider, LiteralUnion } from "next-auth/react"
-import { BuiltInProviderType } from "next-auth/providers";
+import type { ClientSafeProvider, LiteralUnion } from "next-auth/react"
+import type { BuiltInProviderType } from "next-auth/providers";
 import LoginButton from "./LoginButton";
 
 export const metadata = {
