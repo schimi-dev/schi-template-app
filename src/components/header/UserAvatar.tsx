@@ -8,8 +8,8 @@ export default function UserAvatar({ user }: { user: NonNullable<Session["user"]
             className="rounded-full border border-secondary-300 dark:border-secondary-700"
             src={"/avatars/preset.svg"}
             alt={user.name ?? "Avatar"}
-            height={32}
-            width={32}
+            height={24}
+            width={24}
         />
     )
 }
