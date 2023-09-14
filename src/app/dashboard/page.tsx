@@ -32,7 +32,7 @@ export default async function Page() {
                     className="flex flex-col items-center justify-center gap-1 h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"
                 >
                     <span className="text-sm font-medium">
-                        You don't have any projects yet.
+                        {"You don't have any projects yet."}
                     </span>
                     <Link className="text-primary-500 dark:text-primary-400 text-sm font-medium px-3 py-2 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-700"
                         href={navigation.newProject}
