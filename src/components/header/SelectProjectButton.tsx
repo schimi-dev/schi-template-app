@@ -44,7 +44,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                     }
                                     onClick={() => selectProject(x.id)}
                                 >
-                                    <ProjectAvatar project={x} small />
+                                    <ProjectAvatar project={x} />
                                     <span className="flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">
                                         {x.name}
                                     </span>
