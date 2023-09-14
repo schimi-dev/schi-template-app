@@ -23,7 +23,7 @@ export default async function Page() {
                 <ul className="grid grid-cols-2 gap-4">
                     <li>
                         <Link
-                            className="flex flex-col gap-4 h-48 rounded-md border shadow hover:shadow-md hover:bg-secondary-50 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700 p-4"
+                            className="flex flex-col gap-4 h-48 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4"
                             href={navigation.newProject}
                         >
                             <div className="flex items-center gap-3">
@@ -37,7 +37,7 @@ export default async function Page() {
                     {projects.map(project => (
                         <li key={project.id}>
                             <Link
-                                className="flex flex-col gap-4 h-48 rounded-md border shadow hover:shadow-md hover:bg-secondary-50 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700 p-4"
+                                className="flex flex-col gap-4 h-48 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4"
                                 href={navigation.singleProjectOverview(project.id)}
                             >
                                 <div className="flex items-center gap-3">

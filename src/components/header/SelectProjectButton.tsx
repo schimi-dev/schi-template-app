@@ -25,14 +25,14 @@ export default function SelectProjectButton({ projects, project }: { projects: T
             <Menu.Button className="h-10 w-7 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-800 flex items-center justify-center">
                 <MdUnfoldMore className="h-5 w-5" />
             </Menu.Button>
-            <Menu.Items className="top-11 left-3.5 -translate-x-1/2 absolute z-10 rounded-md overflow-hidden shadow border border-secondary-200 bg-white dark:border-secondary-700 dark:bg-secondary-800">
+            <Menu.Items className="top-11 left-3.5 -translate-x-1/2 absolute z-10 rounded-md overflow-hidden shadow border border-secondary-300 bg-white dark:border-secondary-700 dark:bg-secondary-800">
                 <div className="p-4 flex items-center gap-2">
                     <h2 className="text-sm font-medium flex-1">
                         Projects
                     </h2>
                     <span className="text-xs px-0.5 rounded border border-secondary-400 dark:border-secondary-500 dark:bg-secondary-900">Esc</span>
                 </div>
-                <hr className="w-full border-t border-t-secondary-200 dark:border-t-secondary-700" />
+                <hr className="w-full border-t border-t-secondary-300 dark:border-t-secondary-700" />
                 <div className="py-2 overflow-auto w-[280px] max-h-[200px]">
                     {projects.map(x => (
                         <Menu.Item key={x.id} as={Fragment} >
@@ -56,7 +56,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         </Menu.Item>
                     ))}
                 </div>
-                <hr className="w-full border-t border-t-secondary-200 dark:border-t-secondary-700" />
+                <hr className="w-full border-t border-t-secondary-300 dark:border-t-secondary-700" />
                 <div className="py-2">
                     <Menu.Item as={Fragment}>
                         {({ active }) => (
