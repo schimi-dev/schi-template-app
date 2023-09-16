@@ -21,19 +21,14 @@ export default async function Page() {
                     <h1 className="text-2xl font-medium flex-1">
                         {"Your projects"}
                     </h1>
-                    <CreateProjectButton text="New project">
+                    <CreateProjectButton>
                         <CreateProjectForm />
                     </CreateProjectButton>
                 </div>
                 {projects.length === 0 && <div
-                    className="flex flex-col items-center justify-center gap-3 h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"
+                    className="text-sm font-medium flex items-center justify-center h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"
                 >
-                    <span className="text-sm font-medium">
-                        {"You don't have any projects yet."}
-                    </span>
-                    <CreateProjectButton text="Create project">
-                        <CreateProjectForm />
-                    </CreateProjectButton>
+                    {"You don't have any projects yet."}
                 </div>}
                 {projects.length > 0 && <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {projects.map(project => (

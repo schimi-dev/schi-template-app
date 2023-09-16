@@ -4,14 +4,14 @@ import Button from "@/components/core/Button"
 import Modal from "@/components/core/Modal"
 import { ReactNode, useState } from "react"
 
-export default function CreateProjectButton({ children, text }: { children: ReactNode, text: string }) {
+export default function CreateProjectButton({ children }: { children: ReactNode }) {
 
     const [open, setOpen] = useState(false)
 
     return (
         <>
             <Button onClick={() => setOpen(true)}>
-                {text}
+                New project
             </Button>
             <Modal
                 open={open}
