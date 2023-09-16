@@ -2,7 +2,8 @@ import navigation from "@/navigation";
 import getUser from "@/lib/auth/getUser";
 import { findProjects } from "@/lib/data/project";
 import Link from "next/link";
-import { MdAddCircleOutline } from "react-icons/md";
+import CreateProjectButton from "./CreateProjectButton";
+import CreateProjectForm from "./CreateProjectForm";
 
 export const metadata = {
     title: "Dashboard"
@@ -20,25 +21,19 @@ export default async function Page() {
                     <h1 className="text-2xl font-medium flex-1">
                         {"Your projects"}
                     </h1>
-                    <Link
-                        className="text-sm font-medium rounded flex items-center justify-center gap-2 shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.1)] dark:from-[rgba(255,255,255,0.1)] to-[rgba(0,0,0,0.1)] dark:to-[rgba(255,255,255,0.1)] py-2 px-4 bg-primary-500"
-                        href={navigation.newProject}
-                    >
-                        <MdAddCircleOutline className="h-5 w-5 text-white -ml-1" />
-                        New project
-                    </Link>
+                    <CreateProjectButton text="New project">
+                        <CreateProjectForm />
+                    </CreateProjectButton>
                 </div>
                 {projects.length === 0 && <div
-                    className="flex flex-col items-center justify-center gap-1 h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"
+                    className="flex flex-col items-center justify-center gap-3 h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"
                 >
                     <span className="text-sm font-medium">
                         {"You don't have any projects yet."}
                     </span>
-                    <Link className="text-primary-500 dark:text-primary-400 text-sm font-medium px-3 py-2 rounded-md hover:bg-secondary-100 dark:hover:bg-secondary-700"
-                        href={navigation.newProject}
-                    >
-                        Create a new project
-                    </Link>
+                    <CreateProjectButton text="Create project">
+                        <CreateProjectForm />
+                    </CreateProjectButton>
                 </div>}
                 {projects.length > 0 && <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {projects.map(project => (

@@ -10,7 +10,7 @@ export default function Modal({ open, onClose, title, description, children }: {
             <div className="fixed inset-0 bg-black/50 dark:bg-black/70 z-20" aria-hidden="true" />
             {/* Full-screen container to center the panel */}
             <div className="z-50 fixed inset-0 flex items-center justify-center p-4">
-                <Dialog.Panel className="border shadow-2xl bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 rounded-md p-5 flex flex-col gap-4 w-full max-w-xl relative">
+                <Dialog.Panel className="border shadow-2xl bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 rounded-md p-5 flex flex-col gap-5 w-full max-w-xl relative">
                     <Dialog.Title className="text-xl font-medium">
                         {title}
                     </Dialog.Title>

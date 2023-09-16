@@ -3,9 +3,9 @@ import { TProject } from "@/types/project";
 import { useRouter, usePathname } from "next/navigation";
 import navigation from "@/navigation";
 import type { Route } from "next";
-import { MdAddCircleOutline, MdUnfoldMore, MdCheck } from "react-icons/md";
-import ProjectAvatar from './ProjectAvatar';
+import { MdUnfoldMore, MdCheck } from "react-icons/md";
 import { Fragment } from 'react';
+import { MdNavigateBefore } from "react-icons/md";
 
 export default function SelectProjectButton({ projects, project }: { projects: TProject[], project: TProject }) {
 
@@ -33,7 +33,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                     <span className="text-xs px-0.5 rounded border border-secondary-400 dark:border-secondary-500 dark:bg-secondary-900">Esc</span>
                 </div>
                 <hr className="w-full border-t border-t-secondary-300 dark:border-t-secondary-700" />
-                <div className="py-2 overflow-auto w-[280px] max-h-[200px]">
+                <div className="py-2 overflow-auto w-[264px] max-h-[200px]">
                     {projects.map(x => (
                         <Menu.Item key={x.id} as={Fragment} >
                             {({ active }) => (
@@ -44,12 +44,11 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                     }
                                     onClick={() => selectProject(x.id)}
                                 >
-                                    <ProjectAvatar project={x} />
                                     <span className="flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">
                                         {x.name}
                                     </span>
                                     <div className="w-5 flex items-center justify-end">
-                                        {project.id === x.id && <MdCheck className='h-5 w-5' />}
+                                        {project.id === x.id && <MdCheck className='h-4 w-4' />}
                                     </div>
                                 </button>
                             )}
@@ -62,13 +61,14 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         {({ active }) => (
                             <button
                                 className={active ?
-                                    "w-full flex items-center px-4 py-2 gap-3 text-sm cursor-pointer bg-secondary-100 dark:bg-secondary-700" :
-                                    "w-full flex items-center px-4 py-2 gap-3 text-sm cursor-pointer hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                    "w-full flex items-center px-4 py-2 gap-1 text-sm cursor-pointer text-secondary-600 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
+                                    "w-full flex items-center px-4 py-2 gap-1 text-sm cursor-pointer text-secondary-600 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                 }
-                                onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}
+                                onClick={() => push(navigation.dashboard)}
                             >
-                                <MdAddCircleOutline className="h-5 w-5 text-primary-500 dark:text-primary-400" />
-                                Create a new project
+
+                                <MdNavigateBefore className="h-4 w-4" />
+                                Back
                             </button>
                         )}
                     </Menu.Item>
