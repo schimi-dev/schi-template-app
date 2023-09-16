@@ -18,11 +18,11 @@ export default async function Page({ params }: { params: { projectId: string } }
 
     return (
         <main className="flex flex-col gap-7 max-w-3xl mx-auto px-5 py-10">
-            <div className="flex flex-col gap-1 -mb-1">
+            <div className="flex flex-col gap-1">
                 <h1 className="text-2xl font-medium">
                     Project
                 </h1>
-                <p className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
+                <p className="text-sm text-secondary-600 dark:text-secondary-400">
                     Manage your project settings
                 </p>
             </div>
