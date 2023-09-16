@@ -64,7 +64,7 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                                     "w-full flex items-center px-4 py-2 gap-1 text-sm cursor-pointer text-secondary-600 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
                                     "w-full flex items-center px-4 py-2 gap-1 text-sm cursor-pointer text-secondary-600 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                 }
-                                onClick={() => push(navigation.dashboard)}
+                                onClick={() => push(navigation.projects)}
                             >
 
                                 <MdNavigateBefore className="h-4 w-4" />

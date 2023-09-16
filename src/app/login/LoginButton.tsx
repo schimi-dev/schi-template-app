@@ -21,7 +21,7 @@ export default function LoginButton({ provider, primary }: { provider: ClientSaf
                 provider.id,
                 {
                     redirect: true,
-                    callbackUrl: callbackUrl ? callbackUrl : navigation.dashboard
+                    callbackUrl: callbackUrl ? callbackUrl : navigation.projects
                 }
             )}
         >

@@ -12,7 +12,7 @@ export default function DeleteProjectForm({ project }: { project: TProject }) {
         const user = await getUser();
         await deleteProject(project.id, user.id, user.provider);
         revalidatePath("/");
-        redirect(navigation.dashboard)
+        redirect(navigation.projects)
     }
 
     return (

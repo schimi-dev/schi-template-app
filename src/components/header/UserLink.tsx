@@ -6,7 +6,7 @@ import UserAvatar from "./UserAvatar";
 export default function UserLink({ user }: { user: NonNullable<Session["user"]> }) {
 
     return (
-        <BreadcrumbLink href={navigation.dashboard}>
+        <BreadcrumbLink href={navigation.projects}>
             <UserAvatar user={user} />
             {user.name}
         </BreadcrumbLink>

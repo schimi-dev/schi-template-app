@@ -6,7 +6,7 @@ import CreateProjectButton from "./CreateProjectButton";
 import CreateProjectForm from "./CreateProjectForm";
 
 export const metadata = {
-    title: "Dashboard"
+    title: "Your Projects"
 }
 
 export default async function Page() {
