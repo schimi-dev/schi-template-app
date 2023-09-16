@@ -12,6 +12,8 @@ This document contains information about the setup and design decisions. Moreove
 The following environment variables are version managed and can be found in the `.env` file of this project.
 
 `NEXT_PUBLIC_NAME=`
+`NEXT_PUBLIC_LOGO_LIGHT=`
+`NEXT_PUBLIC_LOGO_DARK=`
 
 ### Non-Version Managed
 
