@@ -31,7 +31,7 @@ export default async function Page() {
                         className="flex flex-col gap-2 items-center justify-center h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4 text-primary-500 dark:text-primary-400"
                         href={navigation.newProject}
                     >
-                        <MdAdd className="h-8 w-8" />
+                        <MdAdd className="h-7 w-7" />
                         <span className="text-sm font-medium">
                             New project
                         </span>
@@ -39,10 +39,10 @@ export default async function Page() {
                     {projects.map(project => (
                         <li key={project.id}>
                             <Link
-                                className="flex flex-col gap-4 h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4"
+                                className="flex flex-col gap-3 h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4"
                                 href={navigation.singleProjectOverview(project.id)}
                             >
-                                <span className="text-base font-medium">
+                                <span className="text-sm font-medium">
                                     {project.name}
                                 </span>
                                 <span className="text-xs text-secondary-500 dark:text-secondary-400">
