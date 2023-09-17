@@ -2,7 +2,7 @@ import navigation from "@/navigation";
 import getUser from "@/lib/auth/getUser";
 import { findProjects } from "@/lib/data/project";
 import Link from "next/link";
-import { MdAddCircleOutline } from "react-icons/md";
+import { MdAdd } from "react-icons/md";
 
 export const metadata = {
     title: "Your Projects"
@@ -17,23 +17,25 @@ export default async function Page() {
         <div className="w-full">
             <main className="flex flex-col gap-8 max-w-5xl mx-auto px-5 py-10">
                 <div className="flex items-center gap-4">
-                    <h1 className="text-2xl font-medium flex-1">
-                        {"Your projects"}
-                    </h1>
+                    <div className="flex flex-col gap-1">
+                        <h1 className="text-2xl font-medium">
+                            Your projects
+                        </h1>
+                        <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                            Select a project or create a new one to continue.
+                        </p>
+                    </div>
+                </div>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <Link
-                        className="text-sm font-medium rounded flex items-center justify-center gap-2 shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.1)] dark:from-[rgba(255,255,255,0.1)] to-[rgba(0,0,0,0.1)] dark:to-[rgba(255,255,255,0.1)] py-2 px-4 bg-primary-500"
+                        className="flex flex-col gap-2 items-center justify-center h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4 text-primary-500 dark:text-primary-400"
                         href={navigation.newProject}
                     >
-                        <MdAddCircleOutline className="h-5 w-5 text-white -ml-1" />
-                        New project
+                        <MdAdd className="h-8 w-8" />
+                        <span className="text-sm font-medium">
+                            New project
+                        </span>
                     </Link>
-                </div>
-                {projects.length === 0 && <div
-                    className="text-sm font-medium flex items-center justify-center h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"
-                >
-                    {"You don't have any projects yet."}
-                </div>}
-                {projects.length > 0 && <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {projects.map(project => (
                         <li key={project.id}>
                             <Link
@@ -49,7 +51,7 @@ export default async function Page() {
                             </Link>
                         </li>
                     ))}
-                </ul>}
+                </ul>
             </main>
         </div>
     )

@@ -5,7 +5,7 @@ import { TProject } from "@/types/project";
 import { useRouter, usePathname } from "next/navigation";
 import navigation from "@/navigation";
 import type { Route } from "next";
-import { MdUnfoldMore, MdCheck, MdAddCircleOutline } from "react-icons/md";
+import { MdUnfoldMore, MdCheck, MdAdd } from "react-icons/md";
 import { Fragment } from 'react';
 
 export default function SelectProjectButton({ projects, project }: { projects: TProject[], project: TProject }) {
@@ -40,8 +40,8 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                             {({ active }) => (
                                 <button
                                     className={active ?
-                                        "w-full flex items-center px-4 py-2 gap-3 text-sm cursor-pointer bg-secondary-100 dark:bg-secondary-700" :
-                                        "w-full flex items-center px-4 py-2 gap-3 text-sm cursor-pointer hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                        "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer bg-secondary-100 dark:bg-secondary-700" :
+                                        "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                     }
                                     onClick={() => selectProject(x.id)}
                                 >
@@ -62,13 +62,16 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         {({ active }) => (
                             <button
                                 className={active ?
-                                    "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
-                                    "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                    "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer text-primary-500 dark:text-primary-400 bg-secondary-100 dark:bg-secondary-700" :
+                                    "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer text-primary-500 dark:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                 }
                                 onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}                            >
-
-                                <MdAddCircleOutline className="h-4 w-4 text-primary-500 dark:text-primary-400" />
-                                Create a new project
+                                <span className="flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                                    New project
+                                </span>
+                                <div className="w-5 flex items-center justify-end">
+                                    <MdAdd className="h-4 w-4" />
+                                </div>
                             </button>
                         )}
                     </Menu.Item>
