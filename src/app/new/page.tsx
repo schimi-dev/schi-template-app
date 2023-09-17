@@ -18,7 +18,7 @@ export default async function Page({ searchParams }: { searchParams: { backUrl?:
         <div className="min-h-screen p-8 flex flex-col gap-8">
             <div className="flex flex-row w-full items-start justify-start gap-4">
                 <BackLink href={backUrl} >
-                    {`Back to ${process.env.NEXT_PUBLIC_NAME}`}
+                    Back
                 </BackLink>
                 <div className="ml-auto">
                     <p className="text-xs text-secondary-500 mb-1">
