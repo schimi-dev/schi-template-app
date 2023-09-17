@@ -31,7 +31,7 @@ export default async function Page() {
                         className="flex flex-col gap-2 items-center justify-center h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4 text-primary-500 dark:text-primary-400"
                         href={navigation.newProject}
                     >
-                        <MdAdd className="h-7 w-7" />
+                        <MdAdd className="h-6 w-6" />
                         <span className="text-sm font-medium">
                             New project
                         </span>
