@@ -1,11 +1,12 @@
+'use client'
+
 import { Menu } from '@headlessui/react'
 import { TProject } from "@/types/project";
 import { useRouter, usePathname } from "next/navigation";
 import navigation from "@/navigation";
 import type { Route } from "next";
-import { MdUnfoldMore, MdCheck } from "react-icons/md";
+import { MdUnfoldMore, MdCheck, MdAddCircleOutline } from "react-icons/md";
 import { Fragment } from 'react';
-import { MdNavigateBefore } from "react-icons/md";
 
 export default function SelectProjectButton({ projects, project }: { projects: TProject[], project: TProject }) {
 
@@ -61,14 +62,13 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         {({ active }) => (
                             <button
                                 className={active ?
-                                    "w-full flex items-center px-4 py-2 gap-1 text-sm cursor-pointer text-secondary-600 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
-                                    "w-full flex items-center px-4 py-2 gap-1 text-sm cursor-pointer text-secondary-600 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                    "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
+                                    "w-full flex items-center px-4 py-2 gap-2 text-sm cursor-pointer text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                 }
-                                onClick={() => push(navigation.projects)}
-                            >
+                                onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}                            >
 
-                                <MdNavigateBefore className="h-4 w-4" />
-                                Back
+                                <MdAddCircleOutline className="h-4 w-4 text-primary-500 dark:text-primary-400" />
+                                Create a new project
                             </button>
                         )}
                     </Menu.Item>

@@ -48,7 +48,7 @@ export default function CreateProjectForm() {
                     rows={6}
                 />
             </div>
-            <div className="flex flex-row items-center justify-end">
+            <div className="flex flex-row items-center justify-center">
                 <Submit>Create project</Submit>
             </div>
         </form>

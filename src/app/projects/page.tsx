@@ -2,8 +2,7 @@ import navigation from "@/navigation";
 import getUser from "@/lib/auth/getUser";
 import { findProjects } from "@/lib/data/project";
 import Link from "next/link";
-import CreateProjectButton from "./CreateProjectButton";
-import CreateProjectForm from "./CreateProjectForm";
+import { MdAddCircleOutline } from "react-icons/md";
 
 export const metadata = {
     title: "Your Projects"
@@ -21,9 +20,13 @@ export default async function Page() {
                     <h1 className="text-2xl font-medium flex-1">
                         {"Your projects"}
                     </h1>
-                    <CreateProjectButton>
-                        <CreateProjectForm />
-                    </CreateProjectButton>
+                    <Link
+                        className="text-sm font-medium rounded flex items-center justify-center gap-2 shadow text-white hover:bg-gradient-to-b from-[rgba(0,0,0,0.1)] dark:from-[rgba(255,255,255,0.1)] to-[rgba(0,0,0,0.1)] dark:to-[rgba(255,255,255,0.1)] py-2 px-4 bg-primary-500"
+                        href={navigation.newProject}
+                    >
+                        <MdAddCircleOutline className="h-5 w-5 text-white -ml-1" />
+                        New project
+                    </Link>
                 </div>
                 {projects.length === 0 && <div
                     className="text-sm font-medium flex items-center justify-center h-40 rounded-md border border-secondary-300 dark:border-secondary-700 p-4"

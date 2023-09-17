@@ -1,5 +1,6 @@
 const login = "/login" as const;
 const projects = "/projects" as const;
+const newProject = "/new" as const;
 
 const _singleProject = (id: string) => `${projects}/${id}` as const
 const singleProjectOverview = (id: string) => `${_singleProject(id)}/overview` as const;
@@ -10,6 +11,7 @@ const singleProjectSettings = (id: string) => `${_singleProject(id)}/settings` a
 const navigation = {
     login,
     projects,
+    newProject,
     singleProjectOverview,
     singleProjectBuild,
     singleProjectAnalytics,
