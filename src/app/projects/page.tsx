@@ -5,7 +5,7 @@ import Link from "next/link";
 import { MdAdd } from "react-icons/md";
 
 export const metadata = {
-    title: "Your Projects"
+    title: "Projects"
 }
 
 export default async function Page() {
@@ -19,7 +19,7 @@ export default async function Page() {
                 <div className="flex items-center gap-4">
                     <div className="flex flex-col gap-1">
                         <h1 className="text-2xl font-medium">
-                            Your projects
+                            Projects
                         </h1>
                         <p className="text-sm text-secondary-600 dark:text-secondary-400">
                             Select a project or create a new one to continue.
@@ -28,7 +28,7 @@ export default async function Page() {
                 </div>
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <Link
-                        className="flex flex-col gap-2 items-center justify-center h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4 text-primary-500 dark:text-primary-400"
+                        className="flex flex-col gap-2 items-center justify-center h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-5 text-primary-500 dark:text-primary-400"
                         href={navigation.newProject}
                     >
                         <MdAdd className="h-6 w-6" />
@@ -39,7 +39,7 @@ export default async function Page() {
                     {projects.map(project => (
                         <li key={project.id}>
                             <Link
-                                className="flex flex-col gap-3 h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-4"
+                                className="flex flex-col gap-3 h-40 rounded-md border shadow hover:shadow-md hover:bg-secondary-100 dark:hover:bg-secondary-700 bg-white dark:bg-secondary-800 border-secondary-300 dark:border-secondary-700 p-5"
                                 href={navigation.singleProjectOverview(project.id)}
                             >
                                 <span className="text-sm font-medium">
