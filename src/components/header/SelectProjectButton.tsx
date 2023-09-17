@@ -62,16 +62,13 @@ export default function SelectProjectButton({ projects, project }: { projects: T
                         {({ active }) => (
                             <button
                                 className={active ?
-                                    "w-full flex items-center px-4 py-2 gap-2 text-sm font-medium text-primary-500 dark:text-primary-300 bg-secondary-100 dark:bg-secondary-700" :
-                                    "w-full flex items-center px-4 py-2 gap-2 text-sm font-medium text-primary-500 dark:text-primary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
+                                    "w-full flex items-center px-4 py-2 gap-2 text-sm text-secondary-600 dark:text-secondary-300 bg-secondary-100 dark:bg-secondary-700" :
+                                    "w-full flex items-center px-4 py-2 gap-2 text-sm text-secondary-600 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
                                 }
-                                onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}                            >
-                                <span className="flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis">
-                                    New project
-                                </span>
-                                <div className="w-5 flex items-center justify-end">
-                                    <MdAdd className="h-5 w-5" />
-                                </div>
+                                onClick={() => push(`${navigation.newProject}?${new URLSearchParams({ backUrl: pathname })}`)}
+                            >
+                                <MdAdd className="h-4 w-4" />
+                                Create a new project
                             </button>
                         )}
                     </Menu.Item>
