@@ -1,6 +1,5 @@
 import React from "react";
-import type { ClientSafeProvider, LiteralUnion } from "next-auth/react"
-import type { BuiltInProviderType } from "next-auth/providers";
+import type { ClientSafeProvider } from "next-auth/react"
 import LoginButton from "./LoginButton";
 
 export const metadata = {
@@ -12,7 +11,7 @@ export default async function Page({ searchParams }: { searchParams: { error?: s
     const providers = await fetch(
         `${process.env.NEXTAUTH_URL_INTERNAL}/api/auth/providers`, {
         cache: 'no-store'
-    }).then(res => res.json()) as Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>;
+    }).then(res => res.json()) as Record<string, ClientSafeProvider>;
 
     const error = searchParams.error ?? null;
 
